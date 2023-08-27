@@ -1,0 +1,255 @@
+@font-face {
+  font-family: "Aktiv Grotesk";
+  src: url("./fonts/AktivGrotesk-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Aktiv Bold";
+  src: url("./fonts/AktivGrotesk-Bold.ttf") format("truetype");
+}
+
+#root {
+  --_spacer: 32px;
+  width: 100vw;
+  margin: 0 auto;
+  text-align: start;
+  justify-content: center;
+  background-color: F4F9FC;
+}
+
+.App {
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  position: relative;
+  transition: 1s;
+  background-color: #f4f9fc;
+}
+
+.App:hover {
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  transition: 1s;
+  transform: rotateY(45deg);
+}
+
+/*Scrollable card list*/
+.scrollable-timeline {
+  /*temporary
+  background-color: cyan;
+  border: 3px solid hotpink; */
+
+  padding: var(--_spacer);
+
+  /*grid control*/
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 23%;
+  gap: var(--_spacer);
+
+  overflow-x: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  outline: none;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: var(--_spacer, 2rem);
+}
+
+.snaps-inline > * {
+  scroll-snap-align: center;
+}
+
+.card {
+  /*temporary
+  border: 3px solid limegreen;*/
+
+  padding: var(--_spacer);
+  outline: none;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px 5px black;
+  transition: 0.3s;
+}
+
+.cardImg {
+  border-radius: 2px;
+  inline-size: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+.arrowSelector {
+  filter: drop-shadow(3px 3px 3px black);
+  position: absolute;
+}
+
+/*Beeline*/
+.beelineDiv {
+  display: grid;
+  width: 100%;
+  grid-auto-flow: row;
+  list-style-type: none;
+  position: fixed;
+  bottom: 0;
+}
+
+.beelineDiv:hover {
+  filter: drop-shadow(0 -10px 35px  black);
+}
+
+.beeline {
+  /*display: grid;
+  grid-auto-flow: column;*/
+
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0; */
+  height: 34px;
+  background-color: #202e39;
+  /* list-style-type: none; */
+}
+.beeline:hover {
+  height: 64px;
+  transition: 0.3s;
+}
+
+.beePoint:hover > .beePointMiddle {
+  width: 4px;
+  background-color: gray;
+}
+
+.beePointMiddle {
+  width: 0;
+  border-bottom-color: black;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: rgba(0, 0, 0, 0.5);
+}
+.beePointMiddle:hover {
+  color: hotpink;
+  width: 4px;
+  background-color: gray;
+}
+
+.beePointLeft {
+  width: 20px;
+  background-color: hotpink;
+}
+beePointLeft:hover {
+}
+
+.beePointRight {
+  width: 50px;
+  background-color: greenyellow;
+}
+beePointRight:hover {
+}
+
+.selectedBeePoint {
+  width: 2px;
+  background-color: white;
+  border-bottom-color: white;
+  border-left: 1px solid white;
+  border-left-width: 1px;
+  border-left-style: solid;
+  border-left-color: white;
+}
+
+.beePointContainer {
+  width: 20px;
+}
+
+.beeCard {
+  width: max-content;
+  display: inline-block;
+  position: relative;
+  left: 5px;
+}
+
+.beeCard:hover {
+  display: block;
+}
+
+/*Bee Timeline*/
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0 var(--_spacer) 0 var(--_spacer);
+
+  background-color: #29abe3;
+  border-top: 2px solid black;
+}
+
+div.cursor {
+  background-color: black;
+  top: -10%;
+  height: 110%;
+  width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 2px;
+  position: absolute;
+  border-bottom: none;
+  z-index: 10;
+}
+
+/*Default file*/
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+span {
+  color: black;
+}
+
+@keyframes moveOrigin {
+  from {
+    -webkit-perspective-origin: left;
+    perspective-origin: left;
+  }
+
+  to {
+    -webkit-perspective-origin: right;
+    perspective-origin: right;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.read-the-docs {
+  color: #888;
+}
