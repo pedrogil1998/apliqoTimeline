@@ -71,7 +71,7 @@
 
 .card:hover {
   box-shadow: 0 0 15px 5px black;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .cardImg {
@@ -88,6 +88,7 @@
 
 /*Beeline*/
 .beelineDiv {
+  background-color: #202e39;
   display: grid;
   width: 100%;
   grid-auto-flow: row;
@@ -97,27 +98,32 @@
 }
 
 .beelineDiv:hover {
-  filter: drop-shadow(0 -10px 35px  black);
+  filter: drop-shadow(0 -10px 35px black);
 }
 
 .beeline {
   /*display: grid;
   grid-auto-flow: column;*/
 
-  justify-content: space-evenly;
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 99%;
   /* margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0; */
   height: 34px;
   background-color: #202e39;
+  margin: 0 35px;
   /* list-style-type: none; */
 }
 .beeline:hover {
   height: 64px;
   transition: 0.3s;
+}
+
+.beePointMiddle:hover > .beePointDate {
+  padding-left: 10px;
+  display: inline-block;
 }
 
 .beePoint:hover > .beePointMiddle {
@@ -126,12 +132,12 @@
 }
 
 .beePointMiddle {
+  /*temporary */
+  position: relative;
+
+
   width: 0;
-  border-bottom-color: black;
-  border-left: 1px solid rgba(0, 0, 0, 0.5);
-  border-left-width: 1px;
-  border-left-style: solid;
-  border-left-color: rgba(0, 0, 0, 0.5);
+  border-left: 1px solid rgba(192, 192, 192, 0.5);
 }
 .beePointMiddle:hover {
   color: hotpink;
@@ -154,6 +160,7 @@ beePointRight:hover {
 }
 
 .selectedBeePoint {
+  position: relative;
   width: 2px;
   background-color: white;
   border-bottom-color: white;
@@ -163,6 +170,15 @@ beePointRight:hover {
   border-left-color: white;
 }
 
+.selectedBeePoint > .beePointDate {
+  padding-left: 10px;
+  display: inline-block;
+}
+
+.beePointDate {
+  color: #f4f9fc;
+  width: max-content;
+}
 .beePointContainer {
   width: 20px;
 }
@@ -176,6 +192,10 @@ beePointRight:hover {
 
 .beeCard:hover {
   display: block;
+}
+
+.beePointDate {
+  display: none;
 }
 
 /*Bee Timeline*/
@@ -216,10 +236,6 @@ div.cursor {
 
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-span {
-  color: black;
 }
 
 @keyframes moveOrigin {

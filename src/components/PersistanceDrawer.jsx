@@ -149,9 +149,6 @@ export default function PersistentDrawerLeft() {
           </ListItemButton>
         </ListItem>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-      </Main>
     </Box>
   );
 }
