@@ -1,56 +1,79 @@
 import PropTypes from "prop-types";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   cardDate: {
-    fontFamily: "Aktiv Grotesk",
+    fontFamily: "Aktiv Grotesk !important",
     color: "#F4F9FC",
+    fontSize: "0.6rem !important",
   },
   cardSubtitle: {
-    fontFamily: "Aktiv Bold",
+    fontFamily: "Aktiv Bold !important",
     color: "#F4F9FC",
+    fontSize: "0.8rem !important",
   },
   cardDetailedText: {
-    fontFamily: "Aktiv Grotesk",
+    fontFamily: "Aktiv Grotesk !important",
     color: "#F4F9FC",
   },
   url: {
-    fontFamily: "Aktiv Grotesk",
+    fontFamily: "Aktiv Grotesk !important",
     color: "#F4F9FC",
   },
 });
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
-
 const BasicCard = ({
-  cardDate = "Ago 2023",
-  cardSubtitle = "Default Subtitle",
-  cardDetailedText = "Description",
-  url = "www.defaulturl.com",
-  media = {},
+  item,
   index,
-  handleRemove,
-  selected,
   handleSelectItem,
   handleOpen,
+  getItemDatePercentage,
+  positionalArray,
+  setPosition,
 }) => {
   const classes = useStyles();
-  const { type, source: mediaSource = "" } = media;
-  const { show: showUrl = false, source: urlSource = "" } = url;
 
+  const {
+    cardDate = "Ago 2023",
+    cardSubtitle = "Default Subtitle",
+    cardDetailedText = "Description",
+    url = {},
+    media = {},
+    longCard = false,
+  } = item;
+
+  const { show: showUrl = false, source: urlSource = "" } = url;
+  const { type, source: mediaSource = "" } = media;
   const handleClick = (e) => {
     e.preventDefault();
     handleSelectItem(index);
     handleOpen();
   };
+
+  const getFirstPositionNotTaken = () => {
+    let objectRet = {};
+    positionalArray.forEach((row, rIndex) => {
+      row.forEach((column, cIndex) => {
+        if (
+          (!Object.keys(objectRet).length && column?.taken === false) ||
+          column.taken === index
+        ) {
+          let newPositions = positionalArray;
+          newPositions[rIndex][cIndex].taken = index;
+
+          setPosition(newPositions);
+          console.log(newPositions[rIndex][cIndex]);
+          objectRet = newPositions[rIndex][cIndex];
+        }
+      });
+    });
+    return objectRet;
+  };
+
+  const objPosition = getFirstPositionNotTaken();
+  const { bottom: bottomCalc = 0, top: topCalc = 0 } = objPosition;
+  const position = getItemDatePercentage(item);
 
   return (
     <>
@@ -60,7 +83,11 @@ const BasicCard = ({
           display: "inline-block",
           backgroundColor: "#202E39",
           borderRadius: 2,
-          width: 340,
+          width: longCard ? "10%" : "8%",
+          //left: index !== 0 ? position.split("%")[0] - 5 + "%" : position,
+          left: position,
+          top: topCalc + "%",
+          marginLeft: "32px",
         }}
         onClick={(e) => handleClick(e)}
         raised={true}
@@ -80,33 +107,15 @@ const BasicCard = ({
           >
             {cardDate}
           </Typography>
-
-          {/* <Typography className={classes.url} sx={{ mb: 1.5 }}>
-            {showUrl && urlSource}
-          </Typography>
-          <Typography className={classes.cardDetailedText} variant="body2">
-            {cardDetailedText}
-          </Typography> 
-          <Typography variant="body2" color={selected ? "green" : "red"}>
-            Selected
-          </Typography>*/}
           {type === "IMAGE" && (
             <img id={"img_" + index} src={mediaSource} className={"cardImg"} />
           )}
         </CardContent>
-        {/* <CardActions>
-          <Button
-            href={"#cardId_" + index}
-            size="small"
-            onClick={(e) => handleClick(e)}
-          >
-            Edit Card
-          </Button>
-          <Button size="small" onClick={(e) => handleRemove(index)}>
-            Remove
-          </Button>
-        </CardActions> */}
       </Card>
+      <div
+        className="cardLine"
+        style={{ left: position, top: topCalc + "%" }}
+      ></div>
     </>
   );
 };
@@ -115,7 +124,10 @@ BasicCard.propTypes = {
   cardDate: PropTypes.string,
   cardSubtitle: PropTypes.string,
   cardDetailedText: PropTypes.string,
+  getItemDatePercentage: PropTypes.func,
+  getFirstPositionNotTaken: PropTypes.func,
   url: PropTypes.object,
+  item: PropTypes.object,
 };
 
 export default BasicCard;

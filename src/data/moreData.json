@@ -1,0 +1,126 @@
+[
+  {
+    "cardDate": "May 2017",
+    "cardDateObj": {
+      "year": "2017",
+      "month": "05"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "Apliqo solution sold to ABB (prelim version of UX)",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0a/1440x810_cmsv2_723ea057-3893-5292-beee-8d510d21efe7-5056644.jpg"
+    },
+    "selected": false
+  },
+  {
+    "cardDate": "Jun 2017",
+    "cardDateObj": {
+      "year": "2017",
+      "month": "06"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "Maurycy as new Practice Manager DACH",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Arthur%27s_Seat_Edinburgh.jpg/1920px-Arthur%27s_Seat_Edinburgh.jpg"
+    },
+    "selected": false
+  },
+  {
+    "cardDate": "Oct 2017",
+    "cardDateObj": {
+      "year": "2017",
+      "month": "10"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "Chubb onboards prelim version of UX",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/BlickaufWeisbrunn.jpg/1920px-BlickaufWeisbrunn.jpg"
+    },
+    "selected": false
+  },
+  {
+    "cardDate": "Dec 2017",
+    "cardDateObj": {
+      "year": "2017",
+      "month": "12"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "DB Netz becomes customer",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/City_%2832200483461%29.jpg/1280px-City_%2832200483461%29.jpg"
+    },
+    "selected": false
+  },
+  {
+    "cardDate": "Jun 2018",
+    "cardDateObj": {
+      "year": "2018",
+      "month": "06"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "ABB TBMS project won with Apliqo UX",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/City_%2844479443191%29.jpg/1280px-City_%2844479443191%29.jpg"
+    },
+    "selected": false
+  },
+  {
+    "cardDate": "2019",
+    "cardDateObj": {
+      "year": "2019"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "Established office in Germany",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/31/City_love.jpg"
+    },
+    "selected": false
+  },
+  {
+    "cardDate": "2023",
+    "cardDateObj": {
+      "year": "2023"
+    },
+    "url": {
+      "show": true,
+      "source": "https://www.apliqo.com"
+    },
+    "cardSubtitle": "Established Apliqo Investment Solutions Division",
+    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+    "media": {
+      "type": "IMAGE",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Colombo_20221225_184242.jpg/1920px-Colombo_20221225_184242.jpg"
+    },
+    "selected": false
+  }
+]

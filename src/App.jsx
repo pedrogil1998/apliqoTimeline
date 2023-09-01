@@ -1,26 +1,55 @@
 import { useState, useRef } from "react";
 import "./App.css";
-import { Chrono } from "react-chrono";
-import BasicItem from "./components/Item";
 import PersistentDrawerLeft from "./components/PersistanceDrawer";
 import BasicCard from "./components/Card";
-import { Button } from "@mui/material";
-import { createUnselectedItemList, handleScrollByIndex } from "./utils/utils";
+import {
+  createUnselectedItemList,
+  getDateFromObj,
+  getMaxDate,
+  getMinDate,
+  handleScrollByIndex,
+  percentage,
+} from "./utils/utils";
 import BasicModal from "./components/Modal";
 import Beeline from "./components/Beeline";
 import data from "./data/data.json";
-function App() {
-  const ref = useRef();
-  const [cardList, setCardList] = useState([]);
-  const [selectedCard, setSelectedCard] = useState({});
-  /*Cenas que preciso:
+
+/*Cenas que preciso:
     - Icon da Apliqo
     - Timeline organizada
     - Imagens (?)
   */
-  /*Scroller: https://www.youtube.com/watch?v=3yfswsnD2sw&ab_channel=KevinPowell */
-  /*Create fake db: https://www.youtube.com/watch?v=_j3yiadVGQA&ab_channel=CodeWithYousaf */
+/*Scroller: https://www.youtube.com/watch?v=3yfswsnD2sw&ab_channel=KevinPowell */
+/*Create fake db: https://www.youtube.com/watch?v=_j3yiadVGQA&ab_channel=CodeWithYousaf */
+
+function App() {
+  const ref = useRef();
+  const [selectedCard, setSelectedCard] = useState({});
+
   const [items, setItems] = useState(data);
+  const [positionalArray, setPosition] = useState([
+    [
+      { bottom: 650, top: 10, taken: false },
+      { bottom: 350, top: 40, taken: false },
+      { bottom: 80, top: 70, taken: false },
+      { bottom: 350, top: 40, taken: false },
+      { bottom: 650, top: 10, taken: false },
+    ],
+    [
+      { bottom: 350, top: 40, taken: false },
+      { bottom: 80, top: 70, taken: false },
+      { bottom: 350, top: 40, taken: false },
+      { bottom: 650, top: 10, taken: false },
+      { bottom: 350, top: 40, taken: false },
+    ],
+    [
+      { bottom: 80, top: 70, taken: false },
+      { bottom: 650, top: 10, taken: false },
+      { bottom: 650, top: 10, taken: false },
+      { bottom: 650, top: 10, taken: false },
+      { bottom: 650, top: 10, taken: false },
+    ],
+  ]);
 
   /*Modal Logic*/
   const [open, setOpen] = useState(false);
@@ -56,26 +85,6 @@ function App() {
     }
   };
 
-  const handleRemoveByIndex = (index) => {
-    console.log(index);
-    setCardList((list) => list.filter((obj) => obj.props.index !== index));
-  };
-  const handleAddCardList = () => {
-    setCardList((list) => [
-      ...list,
-      <BasicCard
-        handleRemove={handleRemoveByIndex}
-        key={"card" + list.length}
-        cardDate={"card " + list.length}
-        index={list.length}
-      ></BasicCard>,
-    ]);
-    console.log(cardList);
-  };
-  const handleRemoveCardList = () => {
-    setCardList((list) => list.slice(0, -1));
-  };
-
   const handleUnselectAll = () => {
     let newItems = createUnselectedItemList(items);
     setItems(newItems);
@@ -95,25 +104,34 @@ function App() {
     }
   };
 
+  const getItemDatePercentage = (item) => {
+    const maxDate = getMaxDate(items);
+    const minDate = getMinDate(items);
+
+    const dateDif = Math.abs(maxDate - minDate) * 1.2;
+    const date = getDateFromObj(item);
+    const dateDif2 = Math.abs(date - minDate);
+    return percentage(dateDif2, dateDif);
+  };
+
   return (
     <div onKeyDown={(e) => handleKeyDown(e)}>
       <PersistentDrawerLeft></PersistentDrawerLeft>
 
-      <div className="scrollable-timeline snaps-inline" tabIndex={-1} ref={ref}>
+      {/* <div className="scrollable-timeline snaps-inline" tabIndex={-1} ref={ref}></div> */}
+      <div className="extended-view">
         {items.map((item, index) => {
           return (
             <BasicCard
-              cardDate={item.cardDate}
-              cardSubtitle={item.cardSubtitle}
-              cardDetailedText={item.cardDetailedText}
               key={"card_" + index}
-              url={item.url}
-              media={item.media}
+              item={item}
               index={index}
-              selected={item.selected}
               handleOpen={handleOpen}
               handleSelectItem={handleSelectItem}
               handleUnselectAll={handleUnselectAll}
+              getItemDatePercentage={getItemDatePercentage}
+              positionalArray={positionalArray}
+              setPosition={setPosition}
             />
           );
         })}
@@ -133,12 +151,6 @@ function App() {
         handlePreviousModal={handlePreviousModal}
       />
 
-      {/* <div>
-        <Button onClick={handleAddCardList}>add new card </Button>
-        <Button onClick={handleRemoveCardList}>remove card </Button>
-        
-      </div> */}
-
       <Beeline
         key={selectedCard.index}
         items={items}
@@ -146,35 +158,6 @@ function App() {
         handleOpen={handleOpen}
         handleSelectItem={handleSelectItem}
       />
-
-      {/* <div className="App">
-        <div style={{ width: "100%" }}>
-          <Chrono
-            key={items}
-            items={items}
-            theme={{
-              primary: "#202E39",
-              secondary: "#F4F9FC",
-              cardBgColor: "#1E76BC",
-              cardMediaBgColor: "#1E76BC",
-              cardDateColor: "#FFFFFF",
-              titleColor: "#146646",
-              titleColorActive: "#146646",
-            }}
-            mode="HORIZONTAL"
-            contentDetailsHeight={100}
-            hideControls={true}
-            fontSizes={{
-              title: "1rem",
-            }}
-            slideShow
-            onItemSelected={(e) => {}}
-            cardLess={true}
-          >
-            { <BasicItem cardDate="texto" cardSubtitle="texto1" cardDetailedText="texto2" url="texto2"></BasicItem> }
-          </Chrono>
-        </div>
-      </div> */}
     </div>
   );
 }

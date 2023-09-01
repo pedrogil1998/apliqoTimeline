@@ -9,7 +9,9 @@
 }
 
 #root {
-  --_spacer: 32px;
+  --_spacer: 8px;
+  --_spacer3: 16px;
+  --_spacer2: 32px;
   width: 100vw;
   margin: 0 auto;
   text-align: start;
@@ -30,6 +32,20 @@
   perspective: 800px;
   transition: 1s;
   transform: rotateY(45deg);
+}
+
+/*Full-screen view*/
+.extended-view {
+  width: 200vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  /*align-content: center;*/
+  /*padding: var(--_spacer);*/
+  /* gap: var(--_spacer); */
+  /* margin: 0 35px; */
+  margin: 0 var(--_spacer2);
 }
 
 /*Scrollable card list*/
@@ -61,12 +77,30 @@
   scroll-snap-align: center;
 }
 
+.cardLine {
+  bottom: 30px;
+  position: fixed;
+  width: 2px;
+  height: 100vw;
+  background-color: #202e39;
+  z-index: -1;
+  margin-left: 32px
+}
+
 .card {
   /*temporary
   border: 3px solid limegreen;*/
 
-  padding: var(--_spacer);
+  position: fixed;
+  align-items: flex-start;
+  flex-direction: column;
+
+  padding: var(--_spacer3);
   outline: none;
+}
+
+.MuiCardContent-root {
+  padding: 0 !important;
 }
 
 .card:hover {
@@ -87,36 +121,21 @@
 }
 
 /*Beeline*/
-.beelineDiv {
-  background-color: #202e39;
-  display: grid;
-  width: 100%;
-  grid-auto-flow: row;
-  list-style-type: none;
-  position: fixed;
-  bottom: 0;
-}
 
-.beelineDiv:hover {
-  filter: drop-shadow(0 -10px 35px black);
-}
+
 
 .beeline {
-  /*display: grid;
-  grid-auto-flow: column;*/
-
   display: flex;
   flex-direction: row;
-  width: 99%;
-  /* margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0; */
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
   height: 34px;
   background-color: #202e39;
-  margin: 0 35px;
-  /* list-style-type: none; */
+  padding: 0 var(--_spacer2);
 }
 .beeline:hover {
+  filter: drop-shadow(0 -10px 35px black);
   height: 64px;
   transition: 0.3s;
 }
@@ -126,37 +145,18 @@
   display: inline-block;
 }
 
-.beePoint:hover > .beePointMiddle {
-  width: 4px;
-  background-color: gray;
-}
-
 .beePointMiddle {
   /*temporary */
   position: relative;
-
-
-  width: 0;
-  border-left: 1px solid rgba(192, 192, 192, 0.5);
-}
-.beePointMiddle:hover {
-  color: hotpink;
-  width: 4px;
+  width: 2px;
   background-color: gray;
+  /*rgba(192, 192, 192, 0.5)*/
 }
 
-.beePointLeft {
-  width: 20px;
-  background-color: hotpink;
-}
-beePointLeft:hover {
-}
-
-.beePointRight {
-  width: 50px;
-  background-color: greenyellow;
-}
-beePointRight:hover {
+.beePointMiddle:hover {
+  background-color: gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 }
 
 .selectedBeePoint {

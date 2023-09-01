@@ -6,7 +6,7 @@ export const createUnselectedItemList = (items) => {
 };
 
 export const handleScrollByIndex = (ref, index) => {
-  ref.current.scrollLeft = (index - 1) * 400;
+  //ref.current.scrollLeft = (index - 1) * 400;
 };
 
 export const getDateFromObj = (item) => {
@@ -41,5 +41,6 @@ export const getMinDate = (items) => {
 };
 
 export const percentage = (partialValue, totalValue) => {
-  return (100 * partialValue) / totalValue;
-}
+  const perc = (100 * partialValue) / totalValue + "%";
+  return perc !== "100%" ? perc : "98%"
+};

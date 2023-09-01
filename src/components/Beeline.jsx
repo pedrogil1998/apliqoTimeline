@@ -24,12 +24,12 @@ const Beeline = ({ items, selectedCard, handleSelectItem, handleOpen }) => {
   const maxDate = getMaxDate(items);
   const minDate = getMinDate(items);
 
-  const dateDif = Math.abs(maxDate - minDate);
-
+  const dateDif = Math.abs(maxDate - minDate) * 1.2;
+ 
   const date1 = getDateFromObj(items[1]);
   const date1Dif = Math.abs(date1 - minDate);
   return (
-    <div className="beelineDiv">
+    <div className="beeline">
       {/* <Beepoint className="beePoint" widthLeft={"50px"} widthRight={"30px"} />
       <Beepoint widthLeft={"30px"} widthRight={"36px"} />
       <Beepoint widthLeft={"36px"} widthRight={"20px"} />
@@ -38,14 +38,13 @@ const Beeline = ({ items, selectedCard, handleSelectItem, handleOpen }) => {
         <span>{items[0].cardDate}</span>
         <span>{items[items.length - 1].cardDate}</span>
       </div> */}
-      <div className="beeline">
         {items.map((item, index) => {
           const date = getDateFromObj(item);
           const dateDif2 = Math.abs(date - minDate);
-          const perc = percentage(dateDif2, dateDif) + "%";
+          const perc = percentage(dateDif2, dateDif);
           return (
             <div
-              style={{ left: perc !== "100%" ? perc : "90%" }}
+              style={{ left: perc }}
               className={
                 selectedCard?.index === index
                   ? "selectedBeePoint"
@@ -58,7 +57,6 @@ const Beeline = ({ items, selectedCard, handleSelectItem, handleOpen }) => {
             </div>
           );
         })}
-      </div>
     </div>
   );
 };
