@@ -1,6 +1,7 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { apliqoTangaroa } from "../utils/utils";
 
 const BasicItem = ({ cardDate, cardSubtitle, cardDetailedText, url }) => {
   const [open, setOpen] = useState(false);
@@ -35,7 +36,7 @@ const BasicItem = ({ cardDate, cardSubtitle, cardDetailedText, url }) => {
       style={{ height: "100%", width: "100%" }}
     >
       <div onClick={handleOpen}>
-        <Box sx={{ bgcolor: "#202E39" }}>
+        <Box sx={{ bgcolor: apliqoTangaroa }}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {cardDate}
           </Typography>

@@ -15,7 +15,8 @@
       "type": "IMAGE",
       "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/THIMM_Unternehmenszentrale_in_Northeim.jpg/1920px-THIMM_Unternehmenszentrale_in_Northeim.jpg"
     },
-    "selected": false
+    "selected": false,
+    "major": true
   },
   {
     "cardDate": "Feb 2013",
@@ -33,7 +34,8 @@
       "type": "IMAGE",
       "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Comfort_Inn_Gaslamp_more_computers.jpg/1280px-Comfort_Inn_Gaslamp_more_computers.jpg"
     },
-    "selected": false
+    "selected": false,
+    "major": true
   },
   {
     "cardDate": "Mar 2013",
@@ -180,7 +182,7 @@
     },
     "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
     "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    
+
     "selected": false,
     "longCard": false
   },
@@ -219,6 +221,7 @@
       "type": "IMAGE",
       "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Point_Mugu_September_2013_006.jpg/1280px-Point_Mugu_September_2013_006.jpg"
     },
-    "selected": false
+    "selected": false,
+    "office": true
   }
 ]

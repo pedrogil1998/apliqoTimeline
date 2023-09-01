@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Card, CardContent, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { apliqoTangaroa } from "../utils/utils";
 
 const useStyles = makeStyles({
   cardDate: {
@@ -31,6 +32,8 @@ const BasicCard = ({
   getItemDatePercentage,
   positionalArray,
   setPosition,
+  mode,
+  filter,
 }) => {
   const classes = useStyles();
 
@@ -38,6 +41,9 @@ const BasicCard = ({
     cardDate = "Ago 2023",
     cardSubtitle = "Default Subtitle",
     cardDetailedText = "Description",
+    major = false,
+    office = false,
+    product = false,
     url = {},
     media = {},
     longCard = false,
@@ -63,7 +69,7 @@ const BasicCard = ({
           newPositions[rIndex][cIndex].taken = index;
 
           setPosition(newPositions);
-          console.log(newPositions[rIndex][cIndex]);
+          //console.log(newPositions[rIndex][cIndex]);
           objectRet = newPositions[rIndex][cIndex];
         }
       });
@@ -81,7 +87,14 @@ const BasicCard = ({
         className="card"
         sx={{
           display: "inline-block",
-          backgroundColor: "#202E39",
+          backgroundColor:
+            filter.major && major
+              ? "red"
+              : filter.office && office
+              ? "green"
+              : filter.product && product
+              ? "brown"
+              : apliqoTangaroa,
           borderRadius: 2,
           width: longCard ? "10%" : "8%",
           //left: index !== 0 ? position.split("%")[0] - 5 + "%" : position,

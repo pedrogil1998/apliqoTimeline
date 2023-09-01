@@ -1,6 +1,6 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import { styled, useTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -19,6 +19,8 @@ import GradeIcon from "@mui/icons-material/Grade";
 import PublicIcon from "@mui/icons-material/Public";
 import apliqoLogo from "./../assets/ApliqoLogo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Children } from "react";
+import { apliqoTangaroa, navBar } from "../utils/utils";
 
 const drawerWidth = 240;
 
@@ -65,10 +67,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
-  bgcolor: "#202E39",
+  bgcolor: apliqoTangaroa,
 }));
 
-export default function PersistentDrawerLeft() {
+const PersistentDrawerLeft = ({ setMajorFilter, setFilter, children }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -78,6 +80,36 @@ export default function PersistentDrawerLeft() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleFilter = (text, e) => {
+    e.preventDefault();
+    switch (text) {
+      case navBar.MAJOR_CLIENTS:
+        setFilter((prevState) => ({
+          major: !prevState.major,
+          office: false,
+          product: false,
+        }));
+        break;
+      case navBar.GLOBAL_PRESENCE:
+        setFilter((prevState) => ({
+          major: false,
+          office: !prevState.office,
+          product: false,
+        }));
+        break;
+      case navBar.PRODUCTS:
+        setFilter((prevState) => ({
+          major: false,
+          office: false,
+          product: !prevState.product,
+        }));
+        break;
+      default:
+        break;
+    }
+    handleDrawerClose();
   };
 
   return (
@@ -126,9 +158,13 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Major Clients", "Global Presence", "Products"].map(
+          {[navBar.MAJOR_CLIENTS, navBar.GLOBAL_PRESENCE, navBar.PRODUCTS].map(
             (text, index) => (
-              <ListItem key={text} disablePadding>
+              <ListItem
+                key={text}
+                disablePadding
+                onClick={(e) => handleFilter(text, e)}
+              >
                 <ListItemButton>
                   <ListItemIcon>
                     {index === 0 && <GradeIcon />}
@@ -142,13 +178,20 @@ export default function PersistentDrawerLeft() {
           )}
         </List>
         <Divider />
-        <ListItem key={"Management"} disablePadding>
+        <ListItem key={navBar.MANAGEMENT} disablePadding>
           <ListItemButton>
             <ListItemIcon>{<GradeIcon />}</ListItemIcon>
-            <ListItemText primary={"Management"} />
+            <ListItemText primary={navBar.MANAGEMENT} />
           </ListItemButton>
         </ListItem>
       </Drawer>
+      {/* <Main open={open}>{children}</Main> */}
     </Box>
   );
-}
+};
+
+PersistentDrawerLeft.propTypes = {
+  setMajorFilter: PropTypes.func,
+};
+
+export default PersistentDrawerLeft;

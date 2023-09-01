@@ -1,3 +1,20 @@
+//Styling
+export const apliqoTangaroa = "#202E39";
+
+//CONSTS
+export const modes = {
+  VIEW: "VIEW",
+  MANAGE: "MANAGE",
+};
+
+export const navBar = {
+  MAJOR_CLIENTS: "Major Clients",
+  GLOBAL_PRESENCE: "Global Presence",
+  PRODUCTS: "Products",
+  MANAGEMENT: "Management",
+};
+
+//FUNCTIONS
 export const createUnselectedItemList = (items) => {
   let newItems = items.map((obj) => {
     return { ...obj, selected: false };
@@ -42,5 +59,5 @@ export const getMinDate = (items) => {
 
 export const percentage = (partialValue, totalValue) => {
   const perc = (100 * partialValue) / totalValue + "%";
-  return perc !== "100%" ? perc : "98%"
+  return perc !== "100%" ? perc : "98%";
 };

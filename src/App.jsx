@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import PersistentDrawerLeft from "./components/PersistanceDrawer";
 import BasicCard from "./components/Card";
@@ -8,6 +8,7 @@ import {
   getMaxDate,
   getMinDate,
   handleScrollByIndex,
+  modes,
   percentage,
 } from "./utils/utils";
 import BasicModal from "./components/Modal";
@@ -23,6 +24,15 @@ import data from "./data/data.json";
 /*Create fake db: https://www.youtube.com/watch?v=_j3yiadVGQA&ab_channel=CodeWithYousaf */
 
 function App() {
+  //MANAGEMENT
+  const [mode, setMode] = useState(modes.VIEW);
+  //FILTER
+  const [filter, setFilter] = useState({
+    major: false,
+    office: false,
+    product: false,
+  });
+
   const ref = useRef();
   const [selectedCard, setSelectedCard] = useState({});
 
@@ -116,7 +126,9 @@ function App() {
 
   return (
     <div onKeyDown={(e) => handleKeyDown(e)}>
-      <PersistentDrawerLeft></PersistentDrawerLeft>
+      <PersistentDrawerLeft
+        setFilter={setFilter}
+      ></PersistentDrawerLeft>
 
       {/* <div className="scrollable-timeline snaps-inline" tabIndex={-1} ref={ref}></div> */}
       <div className="extended-view">
@@ -124,6 +136,8 @@ function App() {
           return (
             <BasicCard
               key={"card_" + index}
+              mode={mode}
+              filter={filter}
               item={item}
               index={index}
               handleOpen={handleOpen}
@@ -146,6 +160,7 @@ function App() {
         index={selectedCard.index}
         media={selectedCard.media}
         open={open}
+        mode={mode}
         handleClose={handleClose}
         handleNextModal={handleNextModal}
         handlePreviousModal={handlePreviousModal}
