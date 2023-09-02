@@ -1,6 +1,6 @@
 //Styling
 export const apliqoTangaroa = "#202E39";
-
+export const apliqoAliceBlue = "#F4F9FC";
 //CONSTS
 export const modes = {
   VIEW: "VIEW",
@@ -13,6 +13,27 @@ export const navBar = {
   PRODUCTS: "Products",
   MANAGEMENT: "Management",
 };
+
+export const management = {
+  MAJOR_CLIENT: "Major Client",
+  OFFICE: "Office",
+  PRODUCT: "Product",
+};
+
+export const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 //FUNCTIONS
 export const createUnselectedItemList = (items) => {
@@ -28,10 +49,10 @@ export const handleScrollByIndex = (ref, index) => {
 
 export const getDateFromObj = (item) => {
   return (
-    (item.cardDateObj &&
+    (item?.cardDateObj &&
       item.cardDateObj.month &&
       new Date(item.cardDateObj.year, " ", item.cardDateObj.month)) ||
-    (item.cardDateObj &&
+    (item?.cardDateObj &&
       item.cardDateObj.year &&
       new Date(item.cardDateObj.year))
   );

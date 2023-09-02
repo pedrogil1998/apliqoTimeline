@@ -1,26 +1,26 @@
 import PropTypes from "prop-types";
 import { Card, CardContent, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { apliqoTangaroa } from "../utils/utils";
+import { apliqoTangaroa, apliqoAliceBlue } from "../utils/utils";
 
 const useStyles = makeStyles({
   cardDate: {
     fontFamily: "Aktiv Grotesk !important",
-    color: "#F4F9FC",
+    color: apliqoAliceBlue,
     fontSize: "0.6rem !important",
   },
   cardSubtitle: {
     fontFamily: "Aktiv Bold !important",
-    color: "#F4F9FC",
+    color: apliqoAliceBlue,
     fontSize: "0.8rem !important",
   },
   cardDetailedText: {
     fontFamily: "Aktiv Grotesk !important",
-    color: "#F4F9FC",
+    color: apliqoAliceBlue,
   },
   url: {
     fontFamily: "Aktiv Grotesk !important",
-    color: "#F4F9FC",
+    color: apliqoAliceBlue,
   },
 });
 
@@ -48,9 +48,9 @@ const BasicCard = ({
     media = {},
     longCard = false,
   } = item;
-
   const { show: showUrl = false, source: urlSource = "" } = url;
-  const { type, source: mediaSource = "" } = media;
+  const { type = "", source: mediaSource = "" } = media;
+
   const handleClick = (e) => {
     e.preventDefault();
     handleSelectItem(index);

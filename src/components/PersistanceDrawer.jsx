@@ -20,7 +20,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import apliqoLogo from "./../assets/ApliqoLogo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Children } from "react";
-import { apliqoTangaroa, navBar } from "../utils/utils";
+import { apliqoTangaroa, modes, navBar } from "../utils/utils";
 
 const drawerWidth = 240;
 
@@ -70,7 +70,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   bgcolor: apliqoTangaroa,
 }));
 
-const PersistentDrawerLeft = ({ setMajorFilter, setFilter, children }) => {
+const PersistentDrawerLeft = ({ mode, setFilter, setMode, children }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -109,6 +109,11 @@ const PersistentDrawerLeft = ({ setMajorFilter, setFilter, children }) => {
       default:
         break;
     }
+    handleDrawerClose();
+  };
+
+  const handleMode = (e) => {
+    mode === modes.VIEW ? setMode(modes.MANAGE) : setMode(modes.VIEW);
     handleDrawerClose();
   };
 
@@ -178,7 +183,11 @@ const PersistentDrawerLeft = ({ setMajorFilter, setFilter, children }) => {
           )}
         </List>
         <Divider />
-        <ListItem key={navBar.MANAGEMENT} disablePadding>
+        <ListItem
+          key={navBar.MANAGEMENT}
+          disablePadding
+          onClick={(e) => handleMode(e)}
+        >
           <ListItemButton>
             <ListItemIcon>{<GradeIcon />}</ListItemIcon>
             <ListItemText primary={navBar.MANAGEMENT} />

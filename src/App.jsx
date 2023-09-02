@@ -13,7 +13,14 @@ import {
 } from "./utils/utils";
 import BasicModal from "./components/Modal";
 import Beeline from "./components/Beeline";
-import data from "./data/data.json";
+import { Button } from "@mui/material";
+import NewCardForm from "./components/NewCardForm";
+import {
+  deleteCard,
+  getCardList,
+  postNewCard,
+  updateCard,
+} from "./requests/requests";
 
 /*Cenas que preciso:
     - Icon da Apliqo
@@ -24,8 +31,16 @@ import data from "./data/data.json";
 /*Create fake db: https://www.youtube.com/watch?v=_j3yiadVGQA&ab_channel=CodeWithYousaf */
 
 function App() {
+  //data
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    getCardList(setItems);
+  }, []);
+
   //MANAGEMENT
   const [mode, setMode] = useState(modes.VIEW);
+
   //FILTER
   const [filter, setFilter] = useState({
     major: false,
@@ -36,7 +51,6 @@ function App() {
   const ref = useRef();
   const [selectedCard, setSelectedCard] = useState({});
 
-  const [items, setItems] = useState(data);
   const [positionalArray, setPosition] = useState([
     [
       { bottom: 650, top: 10, taken: false },
@@ -67,8 +81,18 @@ function App() {
   const handleOpen = () => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (unselect = true) => {
     setOpen(false);
+    unselect && handleUnselectAll();
+  };
+
+  /*New Card Modal Logic*/
+  const [openNew, setOpenNew] = useState(false);
+  const handleOpenNew = () => {
+    setOpenNew(true);
+  };
+  const handleCloseNew = () => {
+    setOpenNew(false);
     handleUnselectAll();
   };
 
@@ -97,6 +121,7 @@ function App() {
 
   const handleUnselectAll = () => {
     let newItems = createUnselectedItemList(items);
+    setSelectedCard({});
     setItems(newItems);
   };
   const handleSelectItem = (index) => {
@@ -124,15 +149,32 @@ function App() {
     return percentage(dateDif2, dateDif);
   };
 
+  //API - MANAGAMENT HANDLERS
+  const handleDeleteCardApi = (id) => {
+    deleteCard(id, setItems);
+    handleClose();
+  };
+
+  const handleNewCardApi = (newItem) => {
+    postNewCard(newItem, setItems);
+    handleCloseNew();
+  };
+
+  const handleEditCardApi = (id, newItem) => {
+    updateCard(id, newItem, setItems);
+  };
+
   return (
     <div onKeyDown={(e) => handleKeyDown(e)}>
       <PersistentDrawerLeft
         setFilter={setFilter}
+        setMode={setMode}
+        mode={mode}
       ></PersistentDrawerLeft>
 
       {/* <div className="scrollable-timeline snaps-inline" tabIndex={-1} ref={ref}></div> */}
       <div className="extended-view">
-        {items.map((item, index) => {
+        {items?.map((item, index) => {
           return (
             <BasicCard
               key={"card_" + index}
@@ -150,20 +192,26 @@ function App() {
           );
         })}
       </div>
+      {mode === modes.MANAGE && <Button onClick={handleOpenNew}>New</Button>}
 
       <BasicModal
         key={selectedCard}
-        cardDate={selectedCard.cardDate}
-        cardSubtitle={selectedCard.cardSubtitle}
-        cardDetailedText={selectedCard.cardDetailedText}
-        url={selectedCard.url?.source}
-        index={selectedCard.index}
-        media={selectedCard.media}
+        item={selectedCard}
         open={open}
         mode={mode}
         handleClose={handleClose}
         handleNextModal={handleNextModal}
         handlePreviousModal={handlePreviousModal}
+        deleteCard={handleDeleteCardApi}
+        handleOpenNew={handleOpenNew}
+      />
+
+      <NewCardForm
+        open={openNew}
+        item={selectedCard}
+        handleClose={handleCloseNew}
+        postNewCard={handleNewCardApi}
+        updateCard={handleEditCardApi}
       />
 
       <Beeline
