@@ -18,7 +18,8 @@
         "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/THIMM_Unternehmenszentrale_in_Northeim.jpg/1920px-THIMM_Unternehmenszentrale_in_Northeim.jpg"
       },
       "selected": false,
-      "major": true
+      "major": true,
+      "longCard": true
     },
     {
       "id": 2,
@@ -38,7 +39,8 @@
         "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Comfort_Inn_Gaslamp_more_computers.jpg/1280px-Comfort_Inn_Gaslamp_more_computers.jpg"
       },
       "selected": false,
-      "major": true
+      "major": true,
+      "longCard": true
     },
     {
       "id": 3,
@@ -78,7 +80,8 @@
         "source": "https://upload.wikimedia.org/wikipedia/commons/0/0a/1440x810_cmsv2_723ea057-3893-5292-beee-8d510d21efe7-5056644.jpg"
       },
       "selected": false,
-      "longCard": false
+      "longCard": false,
+      "office": true
     },
     {
       "id": 5,
@@ -98,7 +101,8 @@
         "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/SDCPL-4-WF1-Aug2016.jpg/1280px-SDCPL-4-WF1-Aug2016.jpg"
       },
       "selected": false,
-      "longCard": true
+      "longCard": true,
+      "product": true
     },
     {
       "id": 6,
@@ -214,18 +218,43 @@
       },
       "selected": false,
       "longCard": true,
+      "id": 11
+    },
+    {
+      "cardSubtitle": "The latest event",
+      "cardDetailedText": "Tor is amazing",
+      "cardDate": "August 2023",
+      "cardDateObj": {
+        "year": 2023,
+        "month": 8
+      },
+      "product": true,
+      "id": 12
+    },
+    {
+      "cardSubtitle": "Nova Card",
+      "cardDetailedText": "This card is detailed",
+      "cardDate": "September 2017",
+      "cardDateObj": {
+        "year": 2017,
+        "month": 9
+      },
+      "office": true,
       "id": 13
     },
     {
-      "major": true,
-      "cardSubtitle": "November was Good",
-      "cardDetailedText": "November 2013 was good for us",
-      "[object Object]": "November 2014",
+      "cardSubtitle": "Test December Card",
+      "cardDetailedText": "This card was made to test december month",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://fastly.picsum.photos/id/871/536/354.jpg?hmac=qo4tHTSoxyMyagkIxVbpDCr80KoK2eb_-0rpAZojojg"
+      },
+      "cardDate": "December 2013",
       "cardDateObj": {
         "year": 2013,
-        "month": 11
+        "month": 12
       },
-      "cardDate": "November 2013",
+      "major": true,
       "id": 14
     }
   ]

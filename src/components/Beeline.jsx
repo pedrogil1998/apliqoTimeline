@@ -1,48 +1,40 @@
-import { Box } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
-import Beepoint from "./Beepoint";
 import {
+  apliqoDarkOrange,
+  apliqoTangaroa,
   getDateFromObj,
   getMaxDate,
   getMinDate,
+  handleScrollByIndex,
+  modes,
   percentage,
 } from "../utils/utils";
 
-const bull = (
-  <Box component="span" sx={{ display: "inline-block", mx: "2px" }}>
-    •
-  </Box>
-);
-
-const Beeline = ({ items, selectedCard, handleSelectItem, handleOpen }) => {
-  const handleClick = (e, index) => {
-    e.preventDefault();
-    handleSelectItem(index);
-    handleOpen();
-  };
-
+const Beeline = ({ items, selectedCard, mode }) => {
   const maxDate = getMaxDate(items);
   const minDate = getMinDate(items);
-
   const dateDif = Math.abs(maxDate - minDate) * 1.2;
- 
-  const date1 = getDateFromObj(items[1]);
-  const date1Dif = Math.abs(date1 - minDate);
+
+  const handleClick = (e, index) => {
+    e.preventDefault();
+    handleScrollByIndex(index, e);
+  };
+
   return (
-    <div className="beeline">
-      {/* <Beepoint className="beePoint" widthLeft={"50px"} widthRight={"30px"} />
-      <Beepoint widthLeft={"30px"} widthRight={"36px"} />
-      <Beepoint widthLeft={"36px"} widthRight={"20px"} />
-      <Beepoint widthLeft={"2px"} widthRight={"12px"} /> */}
-      {/* <div className="timeline">
-        <span>{items[0].cardDate}</span>
-        <span>{items[items.length - 1].cardDate}</span>
-      </div> */}
-        {items.map((item, index) => {
-          const date = getDateFromObj(item);
-          const dateDif2 = Math.abs(date - minDate);
-          const perc = percentage(dateDif2, dateDif);
-          return (
+    <div
+      className="beeline"
+      style={{
+        backgroundColor:
+          mode === modes.MANAGE ? apliqoDarkOrange : apliqoTangaroa,
+      }}
+    >
+      {items.map((item, index) => {
+        const date = getDateFromObj(item);
+        const dateDif2 = Math.abs(date - minDate);
+        const perc = percentage(dateDif2, dateDif);
+        return (
+          <Tooltip key={index} title={item.cardDate} placement="top">
             <div
               style={{ left: perc }}
               className={
@@ -52,11 +44,10 @@ const Beeline = ({ items, selectedCard, handleSelectItem, handleOpen }) => {
               }
               key={index}
               onClick={(e) => handleClick(e, index)}
-            >
-              <span className="beePointDate">{item.cardDate}</span>
-            </div>
-          );
-        })}
+            ></div>
+          </Tooltip>
+        );
+      })}
     </div>
   );
 };
@@ -64,8 +55,7 @@ const Beeline = ({ items, selectedCard, handleSelectItem, handleOpen }) => {
 Beeline.propTypes = {
   items: PropTypes.array,
   selectedCard: PropTypes.object,
-  handleSelectItem: PropTypes.func,
-  handleOpen: PropTypes.func,
+  mode: PropTypes.string,
 };
 
 export default Beeline;

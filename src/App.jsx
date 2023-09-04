@@ -7,9 +7,11 @@ import {
   getDateFromObj,
   getMaxDate,
   getMinDate,
+  getYearCount,
   handleScrollByIndex,
   modes,
   percentage,
+  yearlyArray,
 } from "./utils/utils";
 import BasicModal from "./components/Modal";
 import Beeline from "./components/Beeline";
@@ -22,18 +24,8 @@ import {
   updateCard,
 } from "./requests/requests";
 
-/*Cenas que preciso:
-    - Icon da Apliqo
-    - Timeline organizada
-    - Imagens (?)
-  */
-/*Scroller: https://www.youtube.com/watch?v=3yfswsnD2sw&ab_channel=KevinPowell */
-/*Create fake db: https://www.youtube.com/watch?v=_j3yiadVGQA&ab_channel=CodeWithYousaf */
-
 function App() {
-  //data
   const [items, setItems] = useState([]);
-
   useEffect(() => {
     getCardList(setItems);
   }, []);
@@ -48,36 +40,12 @@ function App() {
     product: false,
   });
 
-  const ref = useRef();
+  //CARDS
   const [selectedCard, setSelectedCard] = useState({});
-
-  const [positionalArray, setPosition] = useState([
-    [
-      { bottom: 650, top: 10, taken: false },
-      { bottom: 350, top: 40, taken: false },
-      { bottom: 80, top: 70, taken: false },
-      { bottom: 350, top: 40, taken: false },
-      { bottom: 650, top: 10, taken: false },
-    ],
-    [
-      { bottom: 350, top: 40, taken: false },
-      { bottom: 80, top: 70, taken: false },
-      { bottom: 350, top: 40, taken: false },
-      { bottom: 650, top: 10, taken: false },
-      { bottom: 350, top: 40, taken: false },
-    ],
-    [
-      { bottom: 80, top: 70, taken: false },
-      { bottom: 650, top: 10, taken: false },
-      { bottom: 650, top: 10, taken: false },
-      { bottom: 650, top: 10, taken: false },
-      { bottom: 650, top: 10, taken: false },
-    ],
-  ]);
+  const [positionalArray, setPosition] = useState(yearlyArray);
 
   /*Modal Logic*/
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -104,7 +72,7 @@ function App() {
       newItems[nextIndex].selected = true;
       setSelectedCard({ ...newItems[nextIndex], index: nextIndex });
       setItems(newItems);
-      handleScrollByIndex(ref, nextIndex);
+      handleScrollByIndex(nextIndex);
     }
   };
 
@@ -115,7 +83,7 @@ function App() {
       newItems[nextIndex].selected = true;
       setSelectedCard({ ...newItems[nextIndex], index: nextIndex });
       setItems(newItems);
-      handleScrollByIndex(ref, nextIndex);
+      handleScrollByIndex(nextIndex);
     }
   };
 
@@ -124,18 +92,18 @@ function App() {
     setSelectedCard({});
     setItems(newItems);
   };
-  const handleSelectItem = (index) => {
+  const handleSelectItem = (index, e) => {
     let newItems = createUnselectedItemList(items);
     newItems[index].selected = true;
     setSelectedCard({ ...newItems[index], index: index });
     setItems(newItems);
-    handleScrollByIndex(ref, index);
+    handleScrollByIndex(index, e);
     handleOpen();
   };
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 39 && !open) {
-      handleSelectItem(0);
+      handleSelectItem(0, e);
     }
   };
 
@@ -162,49 +130,53 @@ function App() {
 
   const handleEditCardApi = (id, newItem) => {
     updateCard(id, newItem, setItems);
+    handleCloseNew();
   };
 
   return (
     <div onKeyDown={(e) => handleKeyDown(e)}>
       <PersistentDrawerLeft
+        filter={filter}
         setFilter={setFilter}
         setMode={setMode}
         mode={mode}
+        handleOpenNew={handleOpenNew}
       ></PersistentDrawerLeft>
 
       {/* <div className="scrollable-timeline snaps-inline" tabIndex={-1} ref={ref}></div> */}
-      <div className="extended-view">
+      <div
+        className="extended-view"
+        style={{ width: getYearCount(items) * 160 + "vw" }}
+      >
         {items?.map((item, index) => {
           return (
             <BasicCard
               key={"card_" + index}
-              mode={mode}
               filter={filter}
               item={item}
               index={index}
               handleOpen={handleOpen}
               handleSelectItem={handleSelectItem}
-              handleUnselectAll={handleUnselectAll}
               getItemDatePercentage={getItemDatePercentage}
               positionalArray={positionalArray}
-              setPosition={setPosition}
             />
           );
         })}
       </div>
-      {mode === modes.MANAGE && <Button onClick={handleOpenNew}>New</Button>}
 
-      <BasicModal
-        key={selectedCard}
-        item={selectedCard}
-        open={open}
-        mode={mode}
-        handleClose={handleClose}
-        handleNextModal={handleNextModal}
-        handlePreviousModal={handlePreviousModal}
-        deleteCard={handleDeleteCardApi}
-        handleOpenNew={handleOpenNew}
-      />
+      {Object.keys(selectedCard).length && (
+        <BasicModal
+          key={selectedCard}
+          item={selectedCard}
+          open={open}
+          mode={mode}
+          handleClose={handleClose}
+          handleNextModal={handleNextModal}
+          handlePreviousModal={handlePreviousModal}
+          deleteCard={handleDeleteCardApi}
+          handleOpenNew={handleOpenNew}
+        />
+      )}
 
       <NewCardForm
         open={openNew}
@@ -215,11 +187,11 @@ function App() {
       />
 
       <Beeline
+        style={{ width: getYearCount(items) * 160 + "vw" }}
         key={selectedCard.index}
         items={items}
         selectedCard={selectedCard}
-        handleOpen={handleOpen}
-        handleSelectItem={handleSelectItem}
+        mode={mode}
       />
     </div>
   );

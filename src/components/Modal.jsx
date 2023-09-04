@@ -4,12 +4,6 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@mui/styles";
 import { apliqoAliceBlue, modes } from "../utils/utils";
 
-const useStyles = makeStyles({
-  header: {
-    color: apliqoAliceBlue,
-  },
-});
-
 const style = {
   display: "flex",
   position: "absolute",
@@ -34,19 +28,14 @@ const BasicModal = ({
   item,
   handleOpenNew,
 }) => {
-  const classes = useStyles();
 
   const {
     cardDate = "Ago 2023",
     cardSubtitle = "Default Subtitle",
     cardDetailedText = "Description",
-    major = false,
-    office = false,
-    product = false,
     url = {},
     media = {},
     id,
-    index,
   } = item;
   const { show: showUrl = false, source: urlSource = "" } = url;
   const { type = "", source: mediaSource = "" } = media;
@@ -137,8 +126,18 @@ const BasicModal = ({
               )}
               {mode === modes.MANAGE && (
                 <>
-                  <Button onClick={handleEditCard}>Edit</Button>
-                  <Button onClick={handleDeleteCard}>Remove</Button>
+                  <Button
+                    sx={{ color: apliqoAliceBlue }}
+                    onClick={handleEditCard}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    sx={{ color: apliqoAliceBlue }}
+                    onClick={handleDeleteCard}
+                  >
+                    Remove
+                  </Button>
                 </>
               )}
             </Box>
@@ -163,10 +162,14 @@ const BasicModal = ({
 };
 
 BasicModal.propTypes = {
-  cardDate: PropTypes.string,
-  cardSubtitle: PropTypes.string,
-  cardDetailedText: PropTypes.string,
-  url: PropTypes.string,
+  open: PropTypes.bool,
+  mode: PropTypes.string,
+  handleClose: PropTypes.func,
+  handleNextModal: PropTypes.func,
+  handlePreviousModal: PropTypes.func,
+  deleteCard: PropTypes.func,
+  item: PropTypes.object,
+  handleOpenNew: PropTypes.func,
 };
 
 export default BasicModal;

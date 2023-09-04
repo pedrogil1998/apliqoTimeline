@@ -20,9 +20,7 @@ import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { makeStyles } from "@mui/styles";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
 import dayjs from "dayjs";
 
 const theme = createTheme({
@@ -99,8 +97,19 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
     setDateValue(dateObj);
   };
 
+  const handleUrlChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues({
+      ...formValues,
+      [name]: {
+        type: "IMAGE",
+        source: value,
+      },
+    });
+  };
+
   const handleSubmit = () => {
-    id ? updateCard(id, formValues) : postNewCard(formValues);
+    id ? updateCard(id, { ...item, ...formValues }) : postNewCard(formValues);
   };
   return (
     <Modal
@@ -138,6 +147,16 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
                   onChange={handleTextFieldChange}
                   required
                 ></TextField>
+                <TextField
+                  sx={{ input: { color: apliqoAliceBlue }, mt: 2 }}
+                  name="media"
+                  label={"Image Source URL"}
+                  defaultValue={item.media?.source || ""}
+                  type="text"
+                  variant="outlined"
+                  onChange={handleUrlChange}
+                  required
+                ></TextField>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     sx={{ input: { color: apliqoAliceBlue }, mt: 2 }}
@@ -170,6 +189,12 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
                   }
                   label={management.PRODUCT}
                 />
+                 <FormControlLabel
+                  control={
+                    <Checkbox name="longCard" onChange={handleCheckboxChange} />
+                  }
+                  label={"Wide Content"}
+                />
                 <Button onClick={handleSubmit}>Submit</Button>
               </FormControl>
             </form>
@@ -184,6 +209,8 @@ NewCardForm.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   postNewCard: PropTypes.func,
+  updateCard: PropTypes.func,
+  item: PropTypes.object,
 };
 
 export default NewCardForm;

@@ -1,9 +1,18 @@
 import axios from "axios";
+import { getDateFromObj } from "../utils/utils";
 
 export const getCardList = async (setItems) => {
   await axios
     .get("/events")
-    .then((res) => setItems(res.data))
+    .then((res) =>
+      setItems(
+        res.data.sort(
+          (a, b) =>
+            Date.parse(getDateFromObj(a)) -
+            Date.parse(getDateFromObj(b))
+        )
+      )
+    )
     .catch((err) => console.log(err));
 };
 

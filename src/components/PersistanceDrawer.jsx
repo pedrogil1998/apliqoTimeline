@@ -1,47 +1,40 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import GradeIcon from "@mui/icons-material/Grade";
 import PublicIcon from "@mui/icons-material/Public";
 import apliqoLogo from "./../assets/ApliqoLogo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Children } from "react";
-import { apliqoTangaroa, modes, navBar } from "../utils/utils";
+import MuiAppBar from "@mui/material/AppBar"
+import {
+  apliqoAliceBlue,
+  apliqoDarkOrange,
+  apliqoTangaroa,
+  modes,
+  navBar,
+} from "../utils/utils";
+import {
+  Button,
+  IconButton,
+  Typography,
+  Box,
+  Drawer,
+  Toolbar,
+  List,
+  Divider,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText
+} from "@mui/material";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -70,7 +63,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   bgcolor: apliqoTangaroa,
 }));
 
-const PersistentDrawerLeft = ({ mode, setFilter, setMode, children }) => {
+const PersistentDrawerLeft = ({
+  mode,
+  filter,
+  setFilter,
+  setMode,
+  handleOpenNew,
+  children,
+}) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -120,22 +120,58 @@ const PersistentDrawerLeft = ({ mode, setFilter, setMode, children }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
-        <Toolbar sx={{ bgcolor: "#202E39", height: "50px" }}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ ...(open && { display: "none" }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <img
-            src={apliqoLogo}
-            className="logo"
-            alt="Apliqo logo"
-            style={{ width: "100px", height: "auto" }}
-          />
+        <Toolbar
+          sx={{
+            bgcolor: mode === modes.MANAGE ? apliqoDarkOrange : apliqoTangaroa,
+            height: "50px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box display="flex">
+            <IconButton
+              className="drawerButton"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{ ...(open && { display: "none" }), outline: "none" }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <img
+              src={apliqoLogo}
+              className="logo"
+              alt="Apliqo logo"
+              style={{ width: "100px", height: "auto" }}
+            />
+          </Box>
+          <Box display="flex">
+            {mode === modes.MANAGE && (
+              <Button
+                sx={{ color: apliqoAliceBlue }}
+                onClick={handleOpenNew}
+                endIcon={<AddCircleOutlineIcon />}
+              >
+                New
+              </Button>
+            )}
+            <Typography
+              align="center"
+              color={apliqoAliceBlue}
+              id="modal-modal-cardSubtitle"
+              sx={{
+                lineHeight: "normal",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <FilterAltIcon />
+              {filter.major && navBar.MAJOR_CLIENTS}
+              {filter.office && navBar.GLOBAL_PRESENCE}
+              {filter.product && navBar.PRODUCTS}
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -153,7 +189,7 @@ const PersistentDrawerLeft = ({ mode, setFilter, setMode, children }) => {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton className="drawerButton" onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
@@ -194,7 +230,6 @@ const PersistentDrawerLeft = ({ mode, setFilter, setMode, children }) => {
           </ListItemButton>
         </ListItem>
       </Drawer>
-      {/* <Main open={open}>{children}</Main> */}
     </Box>
   );
 };

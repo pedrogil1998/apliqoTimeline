@@ -36,24 +36,17 @@
 
 /*Full-screen view*/
 .extended-view {
-  width: 200vw;
+  margin: 0 var(--_spacer2);
+  top: 0;
+  height: 100%;
+  position: absolute;
   display: flex;
   flex-direction: row;
-  position: relative;
-  align-items: center;
-  /*align-content: center;*/
-  /*padding: var(--_spacer);*/
-  /* gap: var(--_spacer); */
-  /* margin: 0 35px; */
-  margin: 0 var(--_spacer2);
+  align-items: flex-end;
 }
 
 /*Scrollable card list*/
 .scrollable-timeline {
-  /*temporary
-  background-color: cyan;
-  border: 3px solid hotpink; */
-
   padding: var(--_spacer);
 
   /*grid control*/
@@ -78,25 +71,30 @@
 }
 
 .cardLine {
-  bottom: 30px;
-  position: fixed;
   width: 2px;
-  height: 100vw;
+  height: 100vh;
   background-color: #202e39;
   z-index: -1;
-  margin-left: 32px
+  margin-left: 0px;
+  position: relative;
+}
+
+.cardLineContainer {
+  height: 100vh;
+  position: relative;
 }
 
 .card {
   /*temporary
   border: 3px solid limegreen;*/
 
-  position: fixed;
+  position: relative;
   align-items: flex-start;
   flex-direction: column;
 
   padding: var(--_spacer3);
   outline: none;
+  top: var(--_spacer3);
 }
 
 .MuiCardContent-root {
@@ -122,8 +120,6 @@
 
 /*Beeline*/
 
-
-
 .beeline {
   display: flex;
   flex-direction: row;
@@ -131,7 +127,6 @@
   position: fixed;
   bottom: 0;
   height: 34px;
-  background-color: #202e39;
   padding: 0 var(--_spacer2);
 }
 .beeline:hover {
@@ -148,7 +143,7 @@
 .beePointMiddle {
   /*temporary */
   position: relative;
-  width: 2px;
+  width: 1px;
   background-color: gray;
   /*rgba(192, 192, 192, 0.5)*/
 }
@@ -170,58 +165,11 @@
   border-left-color: white;
 }
 
-.selectedBeePoint > .beePointDate {
-  padding-left: 10px;
-  display: inline-block;
-}
-
-.beePointDate {
-  color: #f4f9fc;
-  width: max-content;
-}
 .beePointContainer {
   width: 20px;
 }
 
-.beeCard {
-  width: max-content;
-  display: inline-block;
-  position: relative;
-  left: 5px;
-}
-
-.beeCard:hover {
-  display: block;
-}
-
-.beePointDate {
-  display: none;
-}
-
-/*Bee Timeline*/
-
-.timeline {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 0 var(--_spacer) 0 var(--_spacer);
-
-  background-color: #29abe3;
-  border-top: 2px solid black;
-}
-
-div.cursor {
-  background-color: black;
-  top: -10%;
-  height: 110%;
-  width: 2px;
-  box-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 2px;
-  position: absolute;
-  border-bottom: none;
-  z-index: 10;
-}
-
-/*Default file*/
+/*Default classes*/
 
 .logo {
   height: 6em;
@@ -268,4 +216,12 @@ div.cursor {
 
 .read-the-docs {
   color: #888;
+}
+
+.MuiButton-root {
+  background-color: #29abe3;
+}
+
+.drawerButton:focus {
+  outline: none;
 }
