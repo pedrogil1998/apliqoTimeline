@@ -36,6 +36,7 @@ const BasicModal = ({
     url = {},
     media = {},
     id,
+    index,
   } = item;
   const { show: showUrl = false, source: urlSource = "" } = url;
   const { type = "", source: mediaSource = "" } = media;
@@ -58,7 +59,7 @@ const BasicModal = ({
   };
 
   const handleDeleteCard = () => {
-    deleteCard(id);
+    deleteCard(index);
   };
   const handleEditCard = () => {
     handleClose(false);

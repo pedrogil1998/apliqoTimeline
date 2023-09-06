@@ -82,10 +82,11 @@ function App() {
   /*Handlers*/
   const handleNextModal = () => {
     let newItems = createUnselectedItemList(items);
-    if (selectedCard.index < items.length - 1) {
-      let nextIndex = selectedCard.index + 1;
+    const foundIndex = newItems.findIndex((element) => element.index === selectedCard.index);
+    if (foundIndex < items.length - 1) {
+      let nextIndex = foundIndex + 1;
       newItems[nextIndex].selected = true;
-      setSelectedCard({ ...newItems[nextIndex], index: nextIndex });
+      setSelectedCard({ ...newItems[nextIndex] });
       setItems(newItems);
       handleScrollByIndex(nextIndex);
     }
@@ -93,10 +94,11 @@ function App() {
 
   const handlePreviousModal = () => {
     let newItems = createUnselectedItemList(items);
-    if (selectedCard.index) {
-      let nextIndex = selectedCard.index - 1;
+    const foundIndex = newItems.findIndex((element) => element.index === selectedCard.index);
+    if (foundIndex) {
+      let nextIndex = foundIndex - 1;
       newItems[nextIndex].selected = true;
-      setSelectedCard({ ...newItems[nextIndex], index: nextIndex });
+      setSelectedCard({ ...newItems[nextIndex] });
       setItems(newItems);
       handleScrollByIndex(nextIndex);
     }
@@ -109,8 +111,9 @@ function App() {
   };
   const handleSelectItem = (index, e) => {
     let newItems = createUnselectedItemList(items);
-    newItems[index].selected = true;
-    setSelectedCard({ ...newItems[index], index: index });
+    const foundIndex = newItems.findIndex((element) => element.index === index);
+    newItems[foundIndex].selected = true;
+    setSelectedCard({ ...newItems[foundIndex], index: index });
     setItems(newItems);
     handleScrollByIndex(index, e);
     handleOpen();
@@ -137,7 +140,6 @@ function App() {
     updateCard(id, newItem, setItems);
     handleCloseNew();
   };
-
 
   //Helper functions
   const getItemDatePercentage = (item) => {
@@ -175,17 +177,14 @@ function App() {
         handleZoom={handleZoom}
       ></PersistentDrawerLeft>
 
-      <div
-        className="extended-view"
-        ref={wrapperRef}
-      >
+      <div className="extended-view" ref={wrapperRef}>
         {items?.map((item, index) => {
           return (
             <BasicCard
               key={"card_" + index}
               filter={filter}
               item={item}
-              index={index}
+              index={item.index}
               handleOpen={handleOpen}
               handleSelectItem={handleSelectItem}
               getItemDatePercentage={getItemDatePercentage}

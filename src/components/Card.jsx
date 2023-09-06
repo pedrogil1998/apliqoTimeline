@@ -96,7 +96,7 @@ const BasicCard = ({
 BasicCard.propTypes = {
   filter: PropTypes.object,
   item: PropTypes.object,
-  index: PropTypes.number,
+  index: PropTypes.string,
   handleOpen: PropTypes.func,
   handleSelectItem: PropTypes.func,
   getItemDatePercentage: PropTypes.func,
