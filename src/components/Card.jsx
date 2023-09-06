@@ -29,7 +29,7 @@ const BasicCard = ({
   zoom,
   checkIfFirstMonth,
 }) => {
-  const classes = useStyles({ zoom: zoom || false });
+  const classes = useStyles();
 
   const {
     cardDate = "Ago 2023",

@@ -89,7 +89,7 @@ export const getDateFromObj = (item) => {
   return (
     (item?.cardDateObj &&
       item.cardDateObj.month &&
-      new Date(item.cardDateObj.year, " ", item.cardDateObj.month)) ||
+      new Date(item.cardDateObj.year, Number(item.cardDateObj.month)-1)) ||
     (item?.cardDateObj &&
       item.cardDateObj.year &&
       new Date(item.cardDateObj.year))

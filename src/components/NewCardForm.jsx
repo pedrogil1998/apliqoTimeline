@@ -8,6 +8,7 @@ import {
   FormLabel,
   Modal,
   TextField,
+  Typography,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import {
@@ -21,6 +22,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import dayjs from "dayjs";
 
 const theme = createTheme({
@@ -43,6 +45,12 @@ const theme = createTheme({
   },
 });
 
+const useStyles = makeStyles({
+  formControlLabel: {
+    color: "apliqoAliceBlue",
+  },
+});
+
 const style = {
   display: "flex",
   position: "absolute",
@@ -58,6 +66,7 @@ const style = {
 };
 
 const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
+  const classes = useStyles();
   const { index = null } = item;
   const [dateValue, setDateValue] = useState(new Date());
   const [formValues, setFormValues] = useState({});
@@ -103,12 +112,21 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
   };
 
   const handleSubmit = () => {
-    index ? updateCard(index, { ...item, ...formValues }) : postNewCard(formValues);
+    index
+      ? updateCard(index, { ...item, ...formValues })
+      : postNewCard(formValues);
+
+    handleCloseForm();
+  };
+
+  const handleCloseForm = () => {
+    setFormValues({});
+    handleClose();
   };
   return (
     <Modal
       open={open}
-      onClose={handleClose}
+      onClose={handleCloseForm}
       aria-labelledby="modal-new-title"
       aria-describedby="modal-new-description"
     >
@@ -173,7 +191,12 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
                       onChange={handleCheckboxChange}
                     />
                   }
-                  label={management.MAJOR_CLIENT}
+                  label={
+                    <Typography className={classes.formControlLabel}>
+                      {management.MAJOR_CLIENT}
+                    </Typography>
+                  }
+                  color={apliqoAliceBlue}
                 />
                 <FormControlLabel
                   control={
@@ -183,7 +206,12 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
                       onChange={handleCheckboxChange}
                     />
                   }
-                  label={management.OFFICE}
+                  label={
+                    <Typography className={classes.formControlLabel}>
+                      {management.OFFICE}
+                    </Typography>
+                  }
+                  color="red"
                 />
                 <FormControlLabel
                   control={
@@ -193,7 +221,11 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
                       onChange={handleCheckboxChange}
                     />
                   }
-                  label={management.PRODUCT}
+                  label={
+                    <Typography className={classes.formControlLabel}>
+                      {management.PRODUCT}
+                    </Typography>
+                  }
                 />
                 <FormControlLabel
                   control={
