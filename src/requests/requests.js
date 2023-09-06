@@ -103,7 +103,10 @@ export const deleteCard = async (id, setItems) => {
 };
 
 export const updateCard = async (id, newItem, setItems) => {
-  const dbRef = ref(db);
+  // // const dbRef = ref(db);
+  deleteCard(id, setItems);
+  postNewCard(newItem, setItems);
+
   // update(dbRef, newItem)
   //   .then(function (response) {
   //     console.log(response);
@@ -113,14 +116,13 @@ export const updateCard = async (id, newItem, setItems) => {
   //     console.log(error);
   //   });
 
-
   // // Get a key for a new Post.
 
   // Write the new post's data simultaneously in the posts list and the user's post list.
-  const updates = {};
-  updates["/events/" + id] = newItem;
+  // const updates = {};
+  // updates["/events/" + id] = newItem;
 
-  return update(dbRef, updates);
+  // return update(dbRef, updates);
 };
 
 // export const updateCard = async (id, newItem, setItems) => {

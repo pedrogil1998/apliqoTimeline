@@ -58,7 +58,7 @@ const style = {
 };
 
 const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
-  const { id = null } = item;
+  const { index = null } = item;
   const [dateValue, setDateValue] = useState(new Date());
   const [formValues, setFormValues] = useState({});
   const handleTextFieldChange = (event) => {
@@ -103,7 +103,7 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
   };
 
   const handleSubmit = () => {
-    id ? updateCard(id, { ...item, ...formValues }) : postNewCard(formValues);
+    index ? updateCard(index, { ...item, ...formValues }) : postNewCard(formValues);
   };
   return (
     <Modal
