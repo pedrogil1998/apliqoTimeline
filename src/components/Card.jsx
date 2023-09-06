@@ -1,121 +1,107 @@
 import PropTypes from "prop-types";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import {
+  apliqoTangaroa,
+  apliqoAliceBlue,
+  hasFilter,
+  getSelectedFilter,
+} from "../utils/utils";
+import BasicCardContent from "./BasicCardContent";
 
 const useStyles = makeStyles({
-  cardDate: {
-    fontFamily: "Aktiv Grotesk",
-    color: "#F4F9FC",
-  },
-  cardSubtitle: {
-    fontFamily: "Aktiv Bold",
-    color: "#F4F9FC",
-  },
-  cardDetailedText: {
-    fontFamily: "Aktiv Grotesk",
-    color: "#F4F9FC",
-  },
-  url: {
-    fontFamily: "Aktiv Grotesk",
-    color: "#F4F9FC",
+  year: {
+    fontFamily: "Aktiv Grotesk !important",
+    color: apliqoTangaroa,
+    fontSize: "3rem !important",
+    filter: "drop-shadow(0px 0px 10px #29ABE3)",
   },
 });
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
-
 const BasicCard = ({
-  cardDate = "Ago 2023",
-  cardSubtitle = "Default Subtitle",
-  cardDetailedText = "Description",
-  url = "www.defaulturl.com",
-  media = {},
+  item,
   index,
-  handleRemove,
-  selected,
   handleSelectItem,
   handleOpen,
+  getItemDatePercentage,
+  filter,
+  positionalArray,
+  zoom,
+  checkIfFirstMonth,
 }) => {
-  const classes = useStyles();
-  const { type, source: mediaSource = "" } = media;
-  const { show: showUrl = false, source: urlSource = "" } = url;
+  const classes = useStyles({ zoom: zoom || false });
 
+  const {
+    cardDate = "Ago 2023",
+    cardSubtitle = "Default Subtitle",
+    cardDateObj = {},
+    major = false,
+    office = false,
+    product = false,
+    media = {},
+    longCard = false,
+  } = item;
+
+  const { month = "01", year = "" } = cardDateObj;
   const handleClick = (e) => {
     e.preventDefault();
     handleSelectItem(index);
     handleOpen();
   };
 
-  return (
-    <>
-      <Card
-        className="card"
-        sx={{
-          display: "inline-block",
-          backgroundColor: "#202E39",
-          borderRadius: 2,
-          width: 340,
-        }}
-        onClick={(e) => handleClick(e)}
-        raised={true}
-      >
-        <CardContent>
-          <Typography
-            className={classes.cardSubtitle}
-            variant="h5"
-            component="div"
-          >
-            {cardSubtitle}
-          </Typography>
-          <Typography
-            className={classes.cardDate}
-            sx={{ fontSize: 14 }}
-            gutterBottom
-          >
-            {cardDate}
-          </Typography>
+  const getFirstPositionNotTaken = () => {
+    return positionalArray[parseInt(month) - 1];
+  };
 
-          {/* <Typography className={classes.url} sx={{ mb: 1.5 }}>
-            {showUrl && urlSource}
-          </Typography>
-          <Typography className={classes.cardDetailedText} variant="body2">
-            {cardDetailedText}
-          </Typography> 
-          <Typography variant="body2" color={selected ? "green" : "red"}>
-            Selected
-          </Typography>*/}
-          {type === "IMAGE" && (
-            <img id={"img_" + index} src={mediaSource} className={"cardImg"} />
-          )}
-        </CardContent>
-        {/* <CardActions>
-          <Button
-            href={"#cardId_" + index}
-            size="small"
-            onClick={(e) => handleClick(e)}
-          >
-            Edit Card
-          </Button>
-          <Button size="small" onClick={(e) => handleRemove(index)}>
-            Remove
-          </Button>
-        </CardActions> */}
-      </Card>
-    </>
+  const objPosition = getFirstPositionNotTaken();
+  const { top: topCalc = 0 } = objPosition;
+  const position = getItemDatePercentage(item);
+
+  const getOpacity = () => {
+    return hasFilter(filter)
+      ? getSelectedFilter(filter, major, office, product)
+        ? 1
+        : 0.5
+      : 1;
+  };
+
+  return (
+    <div
+      className="cardLineContainer"
+      style={{
+        top: topCalc + "%",
+        opacity: getOpacity(),
+        marginRight: "32px",
+      }}
+    >
+      {checkIfFirstMonth(year, month) && (
+        <Typography className={classes.year} variant="h5" component="div">
+          {year}
+        </Typography>
+      )}
+      <BasicCardContent
+        index={index}
+        longCard={longCard}
+        zoom={zoom}
+        handleClick={handleClick}
+        media={media}
+        cardSubtitle={cardSubtitle}
+        cardDate={cardDate}
+      />
+      <div className="cardLine"></div>
+    </div>
   );
 };
 
 BasicCard.propTypes = {
-  cardDate: PropTypes.string,
-  cardSubtitle: PropTypes.string,
-  cardDetailedText: PropTypes.string,
-  url: PropTypes.object,
+  filter: PropTypes.object,
+  item: PropTypes.object,
+  index: PropTypes.number,
+  handleOpen: PropTypes.func,
+  handleSelectItem: PropTypes.func,
+  getItemDatePercentage: PropTypes.func,
+  positionalArray: PropTypes.array,
+  zoom: PropTypes.bool,
 };
 
 export default BasicCard;

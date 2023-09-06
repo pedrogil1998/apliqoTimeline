@@ -1,0 +1,552 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "cardDate": "Jan 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "01"
+      },
+      "url": {
+        "show": false,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Founded by Daniele, Scott, Ben and Jason",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/600/600"
+      },
+      "selected": false,
+      "major": true,
+      "longCard": true
+    },
+    {
+      "id": 2,
+      "cardDate": "Apr 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "04"
+      },
+      "url": {
+        "show": false,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Started development of Apliqo C3",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/497/499"
+      },
+      "selected": true,
+      "major": true,
+      "index": 1,
+      "office": true,
+      "longCard": true
+    },
+    {
+      "id": 3,
+      "cardDate": "May 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "05"
+      },
+      "url": {
+        "show": false,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "1st IBM ESA Agreement signed",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/498/498"
+      },
+      "selected": true,
+      "longCard": true,
+      "index": 2,
+      "major": false,
+      "office": true
+    },
+    {
+      "id": 4,
+      "cardDate": "Sep 2014",
+      "cardDateObj": {
+        "year": "2014",
+        "month": "09"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Go-Live Swissbit with first version of Apliqo C3",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/499/498"
+      },
+      "selected": false,
+      "longCard": true
+    },
+    {
+      "id": 5,
+      "cardDate": "Feb 2016",
+      "cardDateObj": {
+        "year": "2016",
+        "month": "02"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/498/499"
+      },
+      "selected": false,
+      "longCard": true,
+      "product": true
+    },
+    {
+      "id": 6,
+      "cardDate": "Jun 2016",
+      "cardDateObj": {
+        "year": "2016",
+        "month": "06"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Established office in India",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/499/499"
+      },
+      "selected": false,
+      "longCard": true,
+      "office": true
+    },
+    {
+      "id": 7,
+      "cardDate": "Jan 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "01"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Rebranding of Apliqo - new logo",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/499/500"
+      },
+      "selected": false,
+      "longCard": true
+    },
+    {
+      "id": 8,
+      "cardDate": "Feb 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "02"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Rebranding of C3 to FPM",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/500/499"
+      },
+      "selected": false,
+      "longCard": true
+    },
+    {
+      "id": 9,
+      "cardDate": "Mar 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "03"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Apliqo wins IBM ESA Award",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/500/500"
+      },
+      "selected": false,
+      "longCard": true
+    },
+    {
+      "id": 10,
+      "cardDate": "Apr 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "04"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Established teams in Australia (Sydney) and Tel Aviv for FPM and UX",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "selected": false,
+      "longCard": true
+    },
+    {
+      "cardDate": "May 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "05"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Apliqo solution sold to ABB (prelim version of UX)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/500/501"
+      },
+      "selected": false,
+      "longCard": true,
+      "id": 11
+    },
+    {
+      "cardDate": "Jun 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "06"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Maurycy as new Practice Manager DACH",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/500/502"
+      },
+      "selected": false,
+      "id": 12
+    },
+    {
+      "cardDate": "Jul 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "07"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "2nd IBM ESA Agreement signed (major milestone - global deal)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/500/503"
+      },
+      "selected": false,
+      "id": 13
+    },
+    {
+      "cardDate": "Oct 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "10"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Chubb onboards prelim version of UX",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/501/500"
+      },
+      "selected": false,
+      "id": 14
+    },
+    {
+      "cardDate": "Dec 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "12"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "DB Netz becomes customer",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/502/500"
+      },
+      "selected": false,
+      "id": 14
+    },
+    {
+      "cardDate": "Dec 2017",
+      "cardDateObj": {
+        "year": "2017",
+        "month": "12"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "ABB TBMS project won with Apliqo UX",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/503/500"
+      },
+      "selected": false,
+      "id": 15
+    },
+    {
+      "cardDate": "Jan 2018",
+      "cardDateObj": {
+        "year": "2018",
+        "month": "01"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Launch of Apliqo C&C",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/504/500"
+      },
+      "selected": false,
+      "id": 16
+    },
+    {
+      "cardDate": "Jun 2018",
+      "cardDateObj": {
+        "year": "2018",
+        "month": "06"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "ABB FPP won with Apliqo solutions",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/504/501"
+      },
+      "selected": false,
+      "id": 17
+    },
+    {
+      "cardDate": "Sep 2018",
+      "cardDateObj": {
+        "year": "2018",
+        "month": "09"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Apliqo wins IBM ESA Award",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/504/502"
+      },
+      "selected": false,
+      "id": 18
+    },
+    {
+      "cardDate": "2019",
+      "cardDateObj": {
+        "year": "2019"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Established office in Germany",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/504/503"
+      },
+      "selected": false,
+      "office": true,
+      "id": 19
+    },
+    {
+      "cardDate": "Sep 2019",
+      "cardDateObj": {
+        "year": "2019",
+        "month": "09"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Amazon starts using UX - becomes Enterprise customer in 2023",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/504/504"
+      },
+      "selected": false,
+      "id": 20
+    },
+    {
+      "cardDate": "Jan 2021",
+      "cardDateObj": {
+        "year": "2021",
+        "month": "01"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Partnership with NHS",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/505/504"
+      },
+      "selected": false,
+      "id": 21
+    },
+    {
+      "cardDate": "Jan 2022",
+      "cardDateObj": {
+        "year": "2022",
+        "month": "01"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Apliqo becomes IBM Platinum Partner",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/504/505"
+      },
+      "selected": false,
+      "id": 22
+    },
+    {
+      "cardDate": "Mar 2022",
+      "cardDateObj": {
+        "year": "2022",
+        "month": "03"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Apliqo achieves 100 customers around the globe",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/505/505"
+      },
+      "selected": false,
+      "id": 23
+    },
+    {
+      "cardDate": "Ago 2022",
+      "cardDateObj": {
+        "year": "2022",
+        "month": "08"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "3rd IBM ESA Agreement signed adding Investment Solutions (global deal)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/506/505"
+      },
+      "selected": false,
+      "id": 24
+    },
+    {
+      "cardDate": "Jan 2023",
+      "cardDateObj": {
+        "year": "2023",
+        "month": "01"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Established Apliqo Investment Solutions Division",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/506/506"
+      },
+      "selected": false,
+      "id": 25
+    },
+    {
+      "cardDate": "May 2023",
+      "cardDateObj": {
+        "year": "2023",
+        "month": "05"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Parthership with Canoe",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/507/506"
+      },
+      "selected": false,
+      "id": 26
+    },
+    {
+      "cardDate": "Ago 2023",
+      "cardDateObj": {
+        "year": "2023",
+        "month": "08"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Apliqo becomes AWS Partner - Cloud strategy",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://picsum.photos/507/507"
+      },
+      "selected": false,
+      "id": 27
+    }
+  ]
+}

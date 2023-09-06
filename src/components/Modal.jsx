@@ -1,44 +1,44 @@
 import { Box, Button, Fade, Input, Modal, Typography } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@mui/styles";
+import { apliqoAliceBlue, modes } from "../utils/utils";
 
-const useStyles = makeStyles({
-  header: {
-    color: "#F4F9FC",
-  },
-});
+const style = {
+  display: "flex",
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  bgcolor: "#202E39",
+  borderRadius: "8px",
+  boxShadow: 24,
+  p: 4,
+  outline: "none",
+};
 
 const BasicModal = ({
-  cardDate = "test1",
-  cardSubtitle = "test2",
-  cardDetailedText = "test3",
-  url = "urltest",
   open,
+  mode,
   handleClose,
   handleNextModal,
   handlePreviousModal,
-  media = {},
-  index,
+  deleteCard,
+  item,
+  handleOpenNew,
 }) => {
-  const classes = useStyles();
+
+  const {
+    cardDate = "Ago 2023",
+    cardSubtitle = "Default Subtitle",
+    cardDetailedText = "Description",
+    url = {},
+    media = {},
+    id,
+  } = item;
+  const { show: showUrl = false, source: urlSource = "" } = url;
   const { type = "", source: mediaSource = "" } = media;
-
-  const style = {
-    display: "flex",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 600,
-    bgcolor: "#202E39",
-    borderRadius: "8px",
-    boxShadow: 24,
-    p: 4,
-    outline: "none"
-  };
-
   const handleNextClick = (e) => {
     e.preventDefault();
     handleNextModal();
@@ -55,6 +55,14 @@ const BasicModal = ({
     if (e.keyCode === 37) {
       handlePreviousClick(e);
     }
+  };
+
+  const handleDeleteCard = () => {
+    deleteCard(id);
+  };
+  const handleEditCard = () => {
+    handleClose(false);
+    handleOpenNew();
   };
 
   return (
@@ -86,35 +94,51 @@ const BasicModal = ({
             <Box>
               <Typography
                 id="modal-modal-title"
-                color="#F4F9FC"
+                color={apliqoAliceBlue}
                 variant="h6"
                 component="h2"
               >
                 {cardDate}
               </Typography>
               <Typography
-                color="#F4F9FC"
+                color={apliqoAliceBlue}
                 id="modal-modal-cardSubtitle"
                 sx={{ mt: 2 }}
               >
                 {cardSubtitle}
               </Typography>
               <Typography
-                color="#F4F9FC"
+                color={apliqoAliceBlue}
                 id="modal-modal-cardDetailedText"
                 sx={{ mt: 2 }}
               >
                 {cardDetailedText}
               </Typography>
               <Typography id="modal-modal-url" sx={{ mt: 2 }}>
-                {url}
+                {showUrl && urlSource}
               </Typography>
-              {type === "IMAGE" && (
+              {type === "IMAGE" && mediaSource && (
                 <img
                   src={mediaSource}
                   className={"cardImg"}
                   style={{ width: "100%", height: "" }}
                 />
+              )}
+              {mode === modes.MANAGE && (
+                <>
+                  <Button
+                    sx={{ color: apliqoAliceBlue }}
+                    onClick={handleEditCard}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    sx={{ color: apliqoAliceBlue }}
+                    onClick={handleDeleteCard}
+                  >
+                    Remove
+                  </Button>
+                </>
               )}
             </Box>
             <Box
@@ -138,10 +162,14 @@ const BasicModal = ({
 };
 
 BasicModal.propTypes = {
-  cardDate: PropTypes.string,
-  cardSubtitle: PropTypes.string,
-  cardDetailedText: PropTypes.string,
-  url: PropTypes.string,
+  open: PropTypes.bool,
+  mode: PropTypes.string,
+  handleClose: PropTypes.func,
+  handleNextModal: PropTypes.func,
+  handlePreviousModal: PropTypes.func,
+  deleteCard: PropTypes.func,
+  item: PropTypes.object,
+  handleOpenNew: PropTypes.func,
 };
 
 export default BasicModal;

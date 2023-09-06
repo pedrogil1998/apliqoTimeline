@@ -1,170 +1,261 @@
-[
-  {
-    "cardDate": "Feb 2013",
-    "url": {
-      "show": false,
-      "source": "http://www.history.com"
+{
+  "events": [
+    {
+      "id": 1,
+      "cardDate": "Jan 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "01"
+      },
+      "url": {
+        "show": false,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Founded by Daniele, Scott, Ben and Jason",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/THIMM_Unternehmenszentrale_in_Northeim.jpg/1920px-THIMM_Unternehmenszentrale_in_Northeim.jpg"
+      },
+      "selected": false,
+      "major": true,
+      "longCard": true
     },
-    "cardSubtitle": "Founded by Daniele, Scott, Ben and Jason",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
+    {
+      "id": 2,
+      "cardDate": "Feb 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "02"
+      },
+      "url": {
+        "show": false,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Started development of Apliqo C3",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Comfort_Inn_Gaslamp_more_computers.jpg/1280px-Comfort_Inn_Gaslamp_more_computers.jpg"
+      },
+      "selected": false,
+      "major": true,
+      "longCard": true
     },
-    "selected": false
-  },
-  {
-    "cardDate": "April 2013",
-    "url": {
-      "show": false,
-      "source": "http://www.history.com"
+    {
+      "id": 3,
+      "cardDate": "Mar 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "03"
+      },
+      "url": {
+        "show": false,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "Go-Live Swissbit with first version of Apliqo C3",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Hostel_International_San_Diego_Downtown_02.jpg/1280px-Hostel_International_San_Diego_Downtown_02.jpg"
+      },
+      "selected": false,
+      "longCard": true
     },
-    "cardSubtitle": "Started development of Apliqo C3",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Comfort_Inn_Gaslamp_more_computers.jpg/1280px-Comfort_Inn_Gaslamp_more_computers.jpg"
+    {
+      "id": 4,
+      "cardDate": "Abr 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "04"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/0/0a/1440x810_cmsv2_723ea057-3893-5292-beee-8d510d21efe7-5056644.jpg"
+      },
+      "selected": false,
+      "longCard": false,
+      "office": true
     },
-    "selected": false
-  },
-  {
-    "cardDate": "Sep 2014",
-    "url": {
-      "show": false,
-      "source": "http://www.history.com"
+    {
+      "id": 5,
+      "cardDate": "May 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "05"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/SDCPL-4-WF1-Aug2016.jpg/1280px-SDCPL-4-WF1-Aug2016.jpg"
+      },
+      "selected": false,
+      "longCard": true,
+      "product": true
     },
-    "cardSubtitle": "Go-Live Swissbit with first version of Apliqo C3",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Hostel_International_San_Diego_Downtown_02.jpg/1280px-Hostel_International_San_Diego_Downtown_02.jpg"
+    {
+      "id": 6,
+      "cardDate": "Jun 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "06"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Arthur%27s_Seat_Edinburgh.jpg/1920px-Arthur%27s_Seat_Edinburgh.jpg"
+      },
+      "selected": false,
+      "longCard": false
     },
-    "selected": false
-  },
-  {
-    "cardDate": "Feb 2016",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
+    {
+      "id": 7,
+      "cardDate": "Jul 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "07"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/BlickaufWeisbrunn.jpg/1920px-BlickaufWeisbrunn.jpg"
+      },
+      "selected": false,
+      "longCard": false
     },
-    "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/SDCPL-4-WF1-Aug2016.jpg/1280px-SDCPL-4-WF1-Aug2016.jpg"
+    {
+      "id": 8,
+      "cardDate": "Ago 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "08"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/City_%2832200483461%29.jpg/1280px-City_%2832200483461%29.jpg"
+      },
+      "selected": false,
+      "longCard": true
     },
-    "selected": false
-  },
-  {
-    "cardDate": "Jun 2016",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
+    {
+      "id": 9,
+      "cardDate": "Sep 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "09"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/City_%2844479443191%29.jpg/1280px-City_%2844479443191%29.jpg"
+      },
+      "selected": false,
+      "longCard": false
     },
-    "cardSubtitle": "Established office in India",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
+    {
+      "id": 10,
+      "cardDate": "Oct 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "10"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "selected": false,
+      "longCard": false
     },
-    "selected": false
-  },
-  {
-    "cardDate": "May 2017",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
+    {
+      "cardDate": "Nov 2013",
+      "cardDateObj": {
+        "year": "2013",
+        "month": "11"
+      },
+      "url": {
+        "show": true,
+        "source": "https://www.apliqo.com"
+      },
+      "cardSubtitle": "First Apliqo customers in Australia (Ventia, Veolia)",
+      "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Colombo_20221225_184242.jpg/1920px-Colombo_20221225_184242.jpg"
+      },
+      "selected": false,
+      "longCard": true,
+      "id": 11
     },
-    "cardSubtitle": "Apliqo solution sold to ABB (prelim version of UX)",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
+    {
+      "cardSubtitle": "The latest event",
+      "cardDetailedText": "Tor is amazing",
+      "cardDate": "August 2023",
+      "cardDateObj": {
+        "year": 2023,
+        "month": 8
+      },
+      "product": true,
+      "id": 12
     },
-    "selected": false
-  },
-  {
-    "cardDate": "Jun 2017",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
+    {
+      "cardSubtitle": "Nova Card",
+      "cardDetailedText": "This card is detailed",
+      "cardDate": "September 2017",
+      "cardDateObj": {
+        "year": 2017,
+        "month": 9
+      },
+      "office": true,
+      "id": 13
     },
-    "cardSubtitle": "Maurycy as new Practice Manager DACH",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-    },
-    "selected": false
-  },
-  {
-    "cardDate": "Oct 2017",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
-    },
-    "cardSubtitle": "Chubb onboards prelim version of UX",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-    },
-    "selected": false
-  },
-  {
-    "cardDate": "Dec 2017",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
-    },
-    "cardSubtitle": "DB Netz becomes customer",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-    },
-    "selected": false
-  },
-  {
-    "cardDate": "Jun 2018",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
-    },
-    "cardSubtitle": "ABB TBMS project won with Apliqo UX",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-    },
-    "selected": false
-  },
-  {
-    "cardDate": "2019",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
-    },
-    "cardSubtitle": "Established office in Germany",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-    },
-    "selected": false
-  },
-  {
-    "cardDate": "2023",
-    "url": {
-      "show": true,
-      "source": "http://www.history.com"
-    },
-    "cardSubtitle": "Established Apliqo Investment Solutions Division",
-    "cardDetailedText": "In february 2013 the company was founded by Daniele, Scott, Ben and Jason",
-    "media": {
-      "type": "IMAGE",
-      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Phoenicopterus_ruber_in_S%C3%A3o_Paulo_Zoo.jpg"
-    },
-    "selected": false
-  }
-]
+    {
+      "cardSubtitle": "Test December Card",
+      "cardDetailedText": "This card was made to test december month",
+      "media": {
+        "type": "IMAGE",
+        "source": "https://fastly.picsum.photos/id/871/536/354.jpg?hmac=qo4tHTSoxyMyagkIxVbpDCr80KoK2eb_-0rpAZojojg"
+      },
+      "cardDate": "December 2013",
+      "cardDateObj": {
+        "year": 2013,
+        "month": 12
+      },
+      "major": true,
+      "id": 14
+    }
+  ]
+}

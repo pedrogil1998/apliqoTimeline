@@ -9,7 +9,9 @@
 }
 
 #root {
-  --_spacer: 32px;
+  --_spacer: 8px;
+  --_spacer3: 16px;
+  --_spacer2: 32px;
   width: 100vw;
   margin: 0 auto;
   text-align: start;
@@ -32,12 +34,19 @@
   transform: rotateY(45deg);
 }
 
+/*Full-screen view*/
+.extended-view {
+  margin: 0 var(--_spacer2);
+  top: 0;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 /*Scrollable card list*/
 .scrollable-timeline {
-  /*temporary
-  background-color: cyan;
-  border: 3px solid hotpink; */
-
   padding: var(--_spacer);
 
   /*grid control*/
@@ -61,17 +70,40 @@
   scroll-snap-align: center;
 }
 
+.cardLine {
+  width: 2px;
+  height: 300vh;
+  background-color: #202e39;
+  z-index: -1;
+  margin-left: 0px;
+  position: relative;
+}
+
+.cardLineContainer {
+  height: 100vh;
+  position: relative;
+}
+
 .card {
   /*temporary
   border: 3px solid limegreen;*/
 
-  padding: var(--_spacer);
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+
+  padding: var(--_spacer3);
   outline: none;
+  top: var(--_spacer3);
+}
+
+.MuiCardContent-root {
+  padding: 0 !important;
 }
 
 .card:hover {
   box-shadow: 0 0 15px 5px black;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .cardImg {
@@ -82,78 +114,48 @@
 }
 
 .arrowSelector {
-  filter: drop-shadow(3px 3px 3px black);
+  filter: drop-shadow(3px 0px 3px black);
   position: absolute;
 }
 
 /*Beeline*/
-.beelineDiv {
-  display: grid;
-  width: 100%;
-  grid-auto-flow: row;
-  list-style-type: none;
-  position: fixed;
-  bottom: 0;
-}
-
-.beelineDiv:hover {
-  filter: drop-shadow(0 -10px 35px  black);
-}
 
 .beeline {
-  /*display: grid;
-  grid-auto-flow: column;*/
-
-  justify-content: space-evenly;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  /* margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0; */
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
   height: 34px;
-  background-color: #202e39;
-  /* list-style-type: none; */
+  padding: 0 var(--_spacer2);
 }
 .beeline:hover {
+  filter: drop-shadow(0 -10px 35px black);
   height: 64px;
   transition: 0.3s;
 }
 
-.beePoint:hover > .beePointMiddle {
-  width: 4px;
-  background-color: gray;
+.beePointMiddle:hover > .beePointDate {
+  padding-left: 10px;
+  display: inline-block;
 }
 
 .beePointMiddle {
-  width: 0;
-  border-bottom-color: black;
-  border-left: 1px solid rgba(0, 0, 0, 0.5);
-  border-left-width: 1px;
-  border-left-style: solid;
-  border-left-color: rgba(0, 0, 0, 0.5);
-}
-.beePointMiddle:hover {
-  color: hotpink;
-  width: 4px;
+  /*temporary */
+  position: relative;
+  width: 1px;
   background-color: gray;
+  /*rgba(192, 192, 192, 0.5)*/
 }
 
-.beePointLeft {
-  width: 20px;
-  background-color: hotpink;
-}
-beePointLeft:hover {
-}
-
-.beePointRight {
-  width: 50px;
-  background-color: greenyellow;
-}
-beePointRight:hover {
+.beePointMiddle:hover {
+  background-color: gray;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 }
 
 .selectedBeePoint {
+  position: relative;
   width: 2px;
   background-color: white;
   border-bottom-color: white;
@@ -167,41 +169,7 @@ beePointRight:hover {
   width: 20px;
 }
 
-.beeCard {
-  width: max-content;
-  display: inline-block;
-  position: relative;
-  left: 5px;
-}
-
-.beeCard:hover {
-  display: block;
-}
-
-/*Bee Timeline*/
-
-.timeline {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 0 var(--_spacer) 0 var(--_spacer);
-
-  background-color: #29abe3;
-  border-top: 2px solid black;
-}
-
-div.cursor {
-  background-color: black;
-  top: -10%;
-  height: 110%;
-  width: 2px;
-  box-shadow: rgba(0, 0, 0, 0.199219) 1px 1px 2px;
-  position: absolute;
-  border-bottom: none;
-  z-index: 10;
-}
-
-/*Default file*/
+/*Default classes*/
 
 .logo {
   height: 6em;
@@ -216,10 +184,6 @@ div.cursor {
 
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-span {
-  color: black;
 }
 
 @keyframes moveOrigin {
@@ -252,4 +216,12 @@ span {
 
 .read-the-docs {
   color: #888;
+}
+
+.MuiButton-root {
+  background-color: #29abe3;
+}
+
+.drawerButton:focus {
+  outline: none;
 }
