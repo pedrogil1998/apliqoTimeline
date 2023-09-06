@@ -84,8 +84,8 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
       ...formValues,
       cardDate: monthNames[month] + " " + year,
       cardDateObj: {
-        year,
-        month: toString(month + 1),
+        year: year.toString(),
+        month: (month + 1).toString(),
       },
     });
     setDateValue(dateObj);

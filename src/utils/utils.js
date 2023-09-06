@@ -59,10 +59,16 @@ export const yearlyArray = [
 
 //FUNCTIONS
 export const createUnselectedItemList = (items) => {
-  let newItems = items.map((obj) => {
-    return { ...obj, selected: false };
-  });
-  return newItems;
+  // let newItems = items.map((obj) => {
+  //   return { ...obj, selected: false };
+  // });
+
+  let newObj = items;
+  for (const key in newObj) {
+    newObj[key].selected = false;
+  }
+
+  return newObj;
 };
 
 export const handleScrollByIndex = (index, e) => {

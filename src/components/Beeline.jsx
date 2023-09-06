@@ -29,7 +29,7 @@ const Beeline = ({ items, selectedCard, mode }) => {
           mode === modes.MANAGE ? apliqoDarkOrange : apliqoTangaroa,
       }}
     >
-      {items.map((item, index) => {
+      {items?.map((item, index) => {
         const date = getDateFromObj(item);
         const dateDif2 = Math.abs(date - minDate);
         const perc = percentage(dateDif2, dateDif);

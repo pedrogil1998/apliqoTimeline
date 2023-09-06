@@ -72,7 +72,7 @@ const BasicCardContent = ({
 };
 
 BasicCardContent.propTypes = {
-  index: PropTypes.number,
+  index: PropTypes.string,
   longCard: PropTypes.bool,
   zoom: PropTypes.bool,
   handlClick: PropTypes.func,
