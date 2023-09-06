@@ -157,7 +157,7 @@ function App() {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
-      if (item.cardDateObj.year === year) {
+      if (item.cardDateObj?.year === year) {
         savedMonth = item.cardDateObj.month;
         break;
       }
