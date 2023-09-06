@@ -16,6 +16,7 @@ export const navBar = {
   GLOBAL_PRESENCE: "Global Presence",
   PRODUCTS: "Products",
   MANAGEMENT: "Management",
+  RESET: "Reset Filter",
 };
 
 export const management = {
@@ -41,18 +42,19 @@ export const monthNames = [
 
 //POSITIONAL ARRAY
 export const yearlyArray = [
-  { top: 9, taken: false },
-  { top: 38, taken: false },
-  { top: 68, taken: false },
-  { top: 38, taken: false },
-  { top: 9, taken: false },
-  { top: 38, taken: false },
-  { top: 68, taken: false },
-  { top: 38, taken: false },
   { top: 10, taken: false },
-  { top: 38, taken: false },
-  { top: 68, taken: false },
-  { top: 38, taken: false },
+  { top: 15, taken: false },
+  { top: 25, taken: false },
+  { top: 35, taken: false },
+  { top: 45, taken: false },
+  { top: 55, taken: false },
+  { top: 65, taken: false },
+  { top: 75, taken: false },
+  { top: 65, taken: false },
+  { top: 60, taken: false },
+  { top: 45, taken: false },
+  { top: 30, taken: false },
+  { top: 15, taken: false },
 ];
 
 //FUNCTIONS

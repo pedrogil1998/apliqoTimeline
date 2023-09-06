@@ -117,7 +117,7 @@ const BasicModal = ({
               <Typography id="modal-modal-url" sx={{ mt: 2 }}>
                 {showUrl && urlSource}
               </Typography>
-              {type === "IMAGE" && (
+              {type === "IMAGE" && mediaSource && (
                 <img
                   src={mediaSource}
                   className={"cardImg"}

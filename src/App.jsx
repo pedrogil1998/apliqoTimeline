@@ -23,8 +23,12 @@ import {
   postNewCard,
   updateCard,
 } from "./requests/requests";
+import { OtherHouses } from "@mui/icons-material";
 
 function App() {
+  const wrapperRef = useRef(null);
+
+  //DATA
   const [items, setItems] = useState([]);
   useEffect(() => {
     getCardList(setItems);
@@ -42,7 +46,6 @@ function App() {
 
   //CARDS
   const [selectedCard, setSelectedCard] = useState({});
-  const [positionalArray, setPosition] = useState(yearlyArray);
 
   /*Modal Logic*/
   const [open, setOpen] = useState(false);
@@ -63,6 +66,18 @@ function App() {
     setOpenNew(false);
     handleUnselectAll();
   };
+
+  /*Zoom logic*/
+  const [zoom, setZoom] = useState(false);
+  const handleZoom = () => {
+    setZoom((prevState) => !prevState);
+  };
+
+  useEffect(() => {
+    zoom
+      ? (wrapperRef.current.style.zoom = "30%")
+      : (wrapperRef.current.style.zoom = "40%");
+  }, [zoom]);
 
   /*Handlers*/
   const handleNextModal = () => {
@@ -107,16 +122,6 @@ function App() {
     }
   };
 
-  const getItemDatePercentage = (item) => {
-    const maxDate = getMaxDate(items);
-    const minDate = getMinDate(items);
-
-    const dateDif = Math.abs(maxDate - minDate) * 1.2;
-    const date = getDateFromObj(item);
-    const dateDif2 = Math.abs(date - minDate);
-    return percentage(dateDif2, dateDif);
-  };
-
   //API - MANAGAMENT HANDLERS
   const handleDeleteCardApi = (id) => {
     deleteCard(id, setItems);
@@ -133,6 +138,32 @@ function App() {
     handleCloseNew();
   };
 
+
+  //Helper functions
+  const getItemDatePercentage = (item) => {
+    const maxDate = getMaxDate(items);
+    const minDate = getMinDate(items);
+
+    const dateDif = Math.abs(maxDate - minDate) * 1.2;
+    const date = getDateFromObj(item);
+    const dateDif2 = Math.abs(date - minDate);
+    return percentage(dateDif2, dateDif);
+  };
+
+  const checkIfFirstMonth = (year, month) => {
+    let savedMonth = "01";
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+
+      if (item.cardDateObj.year === year) {
+        savedMonth = item.cardDateObj.month;
+        break;
+      }
+    }
+
+    return savedMonth === month;
+  };
+
   return (
     <div onKeyDown={(e) => handleKeyDown(e)}>
       <PersistentDrawerLeft
@@ -141,12 +172,12 @@ function App() {
         setMode={setMode}
         mode={mode}
         handleOpenNew={handleOpenNew}
+        handleZoom={handleZoom}
       ></PersistentDrawerLeft>
 
-      {/* <div className="scrollable-timeline snaps-inline" tabIndex={-1} ref={ref}></div> */}
       <div
         className="extended-view"
-        style={{ width: getYearCount(items) * 160 + "vw" }}
+        ref={wrapperRef}
       >
         {items?.map((item, index) => {
           return (
@@ -158,7 +189,9 @@ function App() {
               handleOpen={handleOpen}
               handleSelectItem={handleSelectItem}
               getItemDatePercentage={getItemDatePercentage}
-              positionalArray={positionalArray}
+              positionalArray={yearlyArray}
+              zoom={zoom}
+              checkIfFirstMonth={checkIfFirstMonth}
             />
           );
         })}

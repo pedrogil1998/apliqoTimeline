@@ -7,25 +7,14 @@ import {
   hasFilter,
   getSelectedFilter,
 } from "../utils/utils";
+import BasicCardContent from "./BasicCardContent";
 
 const useStyles = makeStyles({
-  cardDate: {
+  year: {
     fontFamily: "Aktiv Grotesk !important",
-    color: apliqoAliceBlue,
-    fontSize: "0.6rem !important",
-  },
-  cardSubtitle: {
-    fontFamily: "Aktiv Bold !important",
-    color: apliqoAliceBlue,
-    fontSize: "0.8rem !important",
-  },
-  cardDetailedText: {
-    fontFamily: "Aktiv Grotesk !important",
-    color: apliqoAliceBlue,
-  },
-  url: {
-    fontFamily: "Aktiv Grotesk !important",
-    color: apliqoAliceBlue,
+    color: apliqoTangaroa,
+    fontSize: "3rem !important",
+    filter: "drop-shadow(0px 0px 10px #29ABE3)",
   },
 });
 
@@ -37,8 +26,10 @@ const BasicCard = ({
   getItemDatePercentage,
   filter,
   positionalArray,
+  zoom,
+  checkIfFirstMonth,
 }) => {
-  const classes = useStyles();
+  const classes = useStyles({ zoom: zoom || false });
 
   const {
     cardDate = "Ago 2023",
@@ -51,8 +42,7 @@ const BasicCard = ({
     longCard = false,
   } = item;
 
-  const { type = "", source: mediaSource = "" } = media;
-  const { month = "", year = " " } = cardDateObj;
+  const { month = "01", year = "" } = cardDateObj;
   const handleClick = (e) => {
     e.preventDefault();
     handleSelectItem(index);
@@ -79,43 +69,25 @@ const BasicCard = ({
     <div
       className="cardLineContainer"
       style={{
-        left: position,
         top: topCalc + "%",
         opacity: getOpacity(),
+        marginRight: "32px",
       }}
     >
-      <Card
-        id={"card_" + index}
-        className="card"
-        sx={{
-          display: "inline-block",
-          backgroundColor: apliqoTangaroa,
-          borderRadius: 2,
-          width: longCard ? "200px" : "125px",
-        }}
-        onClick={(e) => handleClick(e)}
-        raised={true}
-      >
-        <CardContent>
-          <Typography
-            className={classes.cardSubtitle}
-            variant="h5"
-            component="div"
-          >
-            {cardSubtitle}
-          </Typography>
-          <Typography
-            className={classes.cardDate}
-            sx={{ fontSize: 14 }}
-            gutterBottom
-          >
-            {cardDate}
-          </Typography>
-          {type === "IMAGE" && (
-            <img id={"img_" + index} src={mediaSource} className={"cardImg"} />
-          )}
-        </CardContent>
-      </Card>
+      {checkIfFirstMonth(year, month) && (
+        <Typography className={classes.year} variant="h5" component="div">
+          {year}
+        </Typography>
+      )}
+      <BasicCardContent
+        index={index}
+        longCard={longCard}
+        zoom={zoom}
+        handleClick={handleClick}
+        media={media}
+        cardSubtitle={cardSubtitle}
+        cardDate={cardDate}
+      />
       <div className="cardLine"></div>
     </div>
   );
@@ -129,6 +101,7 @@ BasicCard.propTypes = {
   handleSelectItem: PropTypes.func,
   getItemDatePercentage: PropTypes.func,
   positionalArray: PropTypes.array,
+  zoom: PropTypes.bool,
 };
 
 export default BasicCard;

@@ -70,16 +70,10 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
   };
   const handleCheckboxChange = (event, checked) => {
     const { name } = event.target;
-    if (!checked) {
-      const copy = { ...formValues };
-      delete copy[name];
-      setFormValues(copy);
-    } else {
-      setFormValues({
-        ...formValues,
-        [name]: checked,
-      });
-    }
+    setFormValues({
+      ...formValues,
+      [name]: checked,
+    });
   };
   const handleDateChange = (value) => {
     let dateObj = new Date(value);
@@ -91,7 +85,7 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
       cardDate: monthNames[month] + " " + year,
       cardDateObj: {
         year,
-        month: month + 1,
+        month: toString(month + 1),
       },
     });
     setDateValue(dateObj);
@@ -173,23 +167,35 @@ const NewCardForm = ({ open, item, handleClose, postNewCard, updateCard }) => {
 
                 <FormControlLabel
                   control={
-                    <Checkbox name="major" onChange={handleCheckboxChange} />
+                    <Checkbox
+                      name="major"
+                      defaultChecked={item.major || false}
+                      onChange={handleCheckboxChange}
+                    />
                   }
                   label={management.MAJOR_CLIENT}
                 />
                 <FormControlLabel
                   control={
-                    <Checkbox name="office" onChange={handleCheckboxChange} />
+                    <Checkbox
+                      name="office"
+                      defaultChecked={item.office || false}
+                      onChange={handleCheckboxChange}
+                    />
                   }
                   label={management.OFFICE}
                 />
                 <FormControlLabel
                   control={
-                    <Checkbox name="product" onChange={handleCheckboxChange} />
+                    <Checkbox
+                      name="product"
+                      defaultChecked={item.product || false}
+                      onChange={handleCheckboxChange}
+                    />
                   }
                   label={management.PRODUCT}
                 />
-                 <FormControlLabel
+                <FormControlLabel
                   control={
                     <Checkbox name="longCard" onChange={handleCheckboxChange} />
                   }

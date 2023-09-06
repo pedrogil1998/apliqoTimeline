@@ -42,7 +42,7 @@
   position: absolute;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 /*Scrollable card list*/
@@ -72,7 +72,7 @@
 
 .cardLine {
   width: 2px;
-  height: 100vh;
+  height: 300vh;
   background-color: #202e39;
   z-index: -1;
   margin-left: 0px;
@@ -114,7 +114,7 @@
 }
 
 .arrowSelector {
-  filter: drop-shadow(3px 3px 3px black);
+  filter: drop-shadow(3px 0px 3px black);
   position: absolute;
 }
 

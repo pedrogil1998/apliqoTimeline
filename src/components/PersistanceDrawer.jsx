@@ -8,8 +8,10 @@ import GradeIcon from "@mui/icons-material/Grade";
 import PublicIcon from "@mui/icons-material/Public";
 import apliqoLogo from "./../assets/ApliqoLogo.png";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Children } from "react";
-import MuiAppBar from "@mui/material/AppBar"
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import MuiAppBar from "@mui/material/AppBar";
 import {
   apliqoAliceBlue,
   apliqoDarkOrange,
@@ -29,10 +31,14 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  FormGroup,
+  FormControlLabel,
+  Switch,
 } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import { Children } from "react";
 
 const drawerWidth = 240;
 
@@ -69,6 +75,7 @@ const PersistentDrawerLeft = ({
   setFilter,
   setMode,
   handleOpenNew,
+  handleZoom,
   children,
 }) => {
   const theme = useTheme();
@@ -117,6 +124,20 @@ const PersistentDrawerLeft = ({
     handleDrawerClose();
   };
 
+  const handleClearFilter = (e) => {
+    e?.preventDefault();
+    setFilter({
+      major: false,
+      office: false,
+      product: false,
+    });
+    handleDrawerClose();
+  };
+
+  const handleSwitch = () => {
+    handleZoom();
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
@@ -128,7 +149,7 @@ const PersistentDrawerLeft = ({
             justifyContent: "space-between",
           }}
         >
-          <Box display="flex">
+          <Box display="flex" alignItems="center">
             <IconButton
               className="drawerButton"
               color="inherit"
@@ -145,11 +166,17 @@ const PersistentDrawerLeft = ({
               alt="Apliqo logo"
               style={{ width: "100px", height: "auto" }}
             />
+            <FormGroup>
+              <FormControlLabel
+                control={<Switch onChange={handleSwitch} />}
+                label="Zoom Out"
+              />
+            </FormGroup>
           </Box>
-          <Box display="flex">
+          <Box display="flex" alignItems="center">
             {mode === modes.MANAGE && (
               <Button
-                sx={{ color: apliqoAliceBlue }}
+                sx={{ color: apliqoAliceBlue, mr: 3 }}
                 onClick={handleOpenNew}
                 endIcon={<AddCircleOutlineIcon />}
               >
@@ -166,11 +193,14 @@ const PersistentDrawerLeft = ({
                 alignItems: "center",
               }}
             >
-              <FilterAltIcon />
+              <FilterAltIcon sx={{ mr: 1 }} />
               {filter.major && navBar.MAJOR_CLIENTS}
               {filter.office && navBar.GLOBAL_PRESENCE}
               {filter.product && navBar.PRODUCTS}
             </Typography>
+            {(filter.major || filter.office || filter.product) && (
+              <HighlightOffIcon onClick={handleClearFilter} sx={{ ml: 1 }} />
+            )}
           </Box>
         </Toolbar>
       </AppBar>
@@ -220,12 +250,23 @@ const PersistentDrawerLeft = ({
         </List>
         <Divider />
         <ListItem
+          key={navBar.RESET}
+          disablePadding
+          onClick={(e) => handleClearFilter(e)}
+        >
+          <ListItemButton>
+            <ListItemIcon>{<RestartAltIcon />}</ListItemIcon>
+            <ListItemText primary={navBar.RESET} />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem
           key={navBar.MANAGEMENT}
           disablePadding
           onClick={(e) => handleMode(e)}
         >
           <ListItemButton>
-            <ListItemIcon>{<GradeIcon />}</ListItemIcon>
+            <ListItemIcon>{<ManageAccountsIcon />}</ListItemIcon>
             <ListItemText primary={navBar.MANAGEMENT} />
           </ListItemButton>
         </ListItem>
