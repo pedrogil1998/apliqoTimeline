@@ -11,7 +11,7 @@ import {
   percentage,
 } from "../utils/utils";
 
-const Beeline = ({ items, selectedCard, mode }) => {
+const Beeline = ({ items, selectedCard, mode, checkIfFirstMonth }) => {
   const maxDate = getMaxDate(items);
   const minDate = getMinDate(items);
   const dateDif = Math.abs(maxDate - minDate) * 1.2;
@@ -43,8 +43,10 @@ const Beeline = ({ items, selectedCard, mode }) => {
                   : "beePointMiddle"
               }
               key={index}
-              onClick={(e) => handleClick(e, index)}
-            ></div>
+              onClick={(e) => handleClick(e, item.index)}
+            >
+              <span style={{ position: "relative", left: "-17px", bottom: "32px", color: "black" }}>{checkIfFirstMonth(item.cardDateObj.year, item.cardDateObj.month) && item.cardDateObj?.year}</span>
+            </div>
           </Tooltip>
         );
       })}
@@ -56,6 +58,7 @@ Beeline.propTypes = {
   items: PropTypes.array,
   selectedCard: PropTypes.object,
   mode: PropTypes.string,
+  checkIfFirstMonth: PropTypes.func,
 };
 
 export default Beeline;

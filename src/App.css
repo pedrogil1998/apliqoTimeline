@@ -72,7 +72,7 @@
 
 .cardLine {
   width: 2px;
-  height: 300vh;
+  height: 100%;
   background-color: #202e39;
   z-index: -1;
   margin-left: 0px;
@@ -80,7 +80,7 @@
 }
 
 .cardLineContainer {
-  height: 100vh;
+  height: 100%;
   position: relative;
 }
 

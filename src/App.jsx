@@ -224,6 +224,7 @@ function App() {
         items={items}
         selectedCard={selectedCard}
         mode={mode}
+        checkIfFirstMonth={checkIfFirstMonth}
       />
     </div>
   );
