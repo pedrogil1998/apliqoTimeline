@@ -7,7 +7,7 @@ const useStyles = makeStyles({
   cardDate: {
     fontFamily: "Aktiv Grotesk !important",
     color: apliqoAliceBlue,
-    fontSize: "1.3rem !important",
+    //fontSize: "1.3rem !important",
   },
   cardSubtitle: {
     fontFamily: "Aktiv Bold !important",
@@ -58,7 +58,7 @@ const BasicCardContent = ({
         )}
         <Typography
           className={!zoom ? classes.cardDate : classes.cardSubtitle}
-          sx={{ fontSize: 14 }}
+          sx={zoom ? { fontSize: "2.5rem !important" } : {fontSize: "1.3rem !important"}}
           gutterBottom
         >
           {cardDate}

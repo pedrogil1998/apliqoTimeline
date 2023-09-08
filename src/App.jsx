@@ -75,7 +75,7 @@ function App() {
 
   useEffect(() => {
     zoom
-      ? (wrapperRef.current.style.zoom = "30%")
+      ? (wrapperRef.current.style.zoom = "25%")
       : (wrapperRef.current.style.zoom = "40%");
   }, [zoom]);
 
